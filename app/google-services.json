@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "7772603853",
+    "project_id": "job-seeker-f267f",
+    "storage_bucket": "job-seeker-f267f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7772603853:android:582b2ce24a1c6e283e3084",
+        "android_client_info": {
+          "package_name": "com.tugasakhirpab2.rjn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7772603853-fv38o386neerum60i0drmf2d150b3jr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbfy_gUFF_wMFHm3PGSa2-sOz1fa_be0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7772603853-fv38o386neerum60i0drmf2d150b3jr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
