@@ -1,4 +1,4 @@
-package com.tugasakhirpab2.rjn;
+package com.tugasakhirpab2.rjn.activities;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
