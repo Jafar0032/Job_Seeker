@@ -43,6 +43,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     // Firebase Auth
     implementation 'com.google.firebase:firebase-auth'
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-database'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

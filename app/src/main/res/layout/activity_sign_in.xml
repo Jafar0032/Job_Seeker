@@ -78,7 +78,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btnForgetPass"
+                    android:id="@+id/btnForgotPass"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnSignIp"
+                    android:id="@+id/btnSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -101,14 +101,14 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnSignIn"
+                    android:id="@+id/btnSignUp"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:text="Dont Have Account? \nSign Un"
+                    android:text="Dont Have Account? \nSign Up"
                     android:textAllCaps="false"
                     android:textSize="16sp" />
 
