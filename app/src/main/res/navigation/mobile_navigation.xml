@@ -12,14 +12,27 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.tugasakhirpab2.rjn.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_search"
+        android:name="com.tugasakhirpab2.rjn.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search"/>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.tugasakhirpab2.rjn.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_bookmark"
+        android:name="com.tugasakhirpab2.rjn.ui.bookmark.BookmarkFragment"
+        android:label="@string/title_bookmark"
+        tools:layout="@layout/fragment_bookmark"/>
+
+    <fragment
+        android:id="@+id/navigation_learn"
+        android:name="com.tugasakhirpab2.rjn.ui.learn.LearnFragment"
+        android:label="@string/title_learn"
+        tools:layout="@layout/fragment_learn"/>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.tugasakhirpab2.rjn.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>
