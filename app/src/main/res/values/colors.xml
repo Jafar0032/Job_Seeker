@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#FBFBFB</color>
+    <color name="orange_inti">#F36E5D</color>
+    <color name="orange_lain">#F37362</color>
+    <color name="hitam_abu">#4E4E4E</color>
+    <color name="abu_tebal">#B0AFAF</color>
+    <color name="abu_tipis">#999999</color>
+
 </resources>
