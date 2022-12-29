@@ -14,8 +14,8 @@ import com.tugasakhirpab2.rjn.R;
 public class AppIntro extends com.github.appintro.AppIntro {
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.appintro1));
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.appintro2));
@@ -49,7 +49,7 @@ public class AppIntro extends com.github.appintro.AppIntro {
     protected void onSkipPressed(@Nullable Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
 
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
         finish();
     }
 
@@ -57,7 +57,7 @@ public class AppIntro extends com.github.appintro.AppIntro {
     protected void onDonePressed(@Nullable Fragment currentFragment) {
         super.onDonePressed(currentFragment);
 
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
         finish();
     }
 }
