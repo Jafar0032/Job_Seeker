@@ -13,5 +13,8 @@
     <color name="hitam_abu">#4E4E4E</color>
     <color name="abu_tebal">#B0AFAF</color>
     <color name="abu_tipis">#999999</color>
+    <color name="primary">#F37362</color>
+    <color name="grey_lighter">#CCCCFF</color>
+    <color name="grey">#B0B0B0</color>
 
 </resources>
