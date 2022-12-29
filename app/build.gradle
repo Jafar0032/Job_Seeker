@@ -45,6 +45,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     // Firebase Realtime Database
     implementation 'com.google.firebase:firebase-database'
+    // Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
