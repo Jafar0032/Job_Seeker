@@ -35,6 +35,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 mAuth.signOut();
                 startActivity(new Intent(getActivity(), SignInActivity.class));
+                getActivity().finish();
             }
         });
         return root;
