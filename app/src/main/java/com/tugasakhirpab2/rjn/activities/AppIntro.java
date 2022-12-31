@@ -49,7 +49,7 @@ public class AppIntro extends com.github.appintro.AppIntro {
     protected void onSkipPressed(@Nullable Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
 
-        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+        startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
         finish();
     }
 
@@ -57,7 +57,7 @@ public class AppIntro extends com.github.appintro.AppIntro {
     protected void onDonePressed(@Nullable Fragment currentFragment) {
         super.onDonePressed(currentFragment);
 
-        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+        startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
         finish();
     }
 }

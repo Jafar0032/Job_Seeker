@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tugasakhirpab2.rjn.activities.SignInActivity;
+import com.tugasakhirpab2.rjn.activities.SignUpActivity;
 import com.tugasakhirpab2.rjn.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
@@ -34,7 +35,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-                startActivity(new Intent(getActivity(), SignInActivity.class));
+                startActivity(new Intent(getActivity(), SignUpActivity.class));
                 getActivity().finish();
             }
         });

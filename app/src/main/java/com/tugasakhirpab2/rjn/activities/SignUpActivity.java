@@ -23,7 +23,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
-    private DatabaseReference mRoot, mRef;
+    private DatabaseReference reference, mRef;
     private String Famale = "Famale";
     private String Male = "Male";
 
@@ -36,11 +36,15 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
-        mRoot = mDatabase.getReference();
+        reference = mDatabase.getReference();
 
         binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                mDatabase = FirebaseDatabase.getInstance();
+//                reference = mDatabase.getReference("users");
+
                 final String email = binding.etEmail.getText().toString();
                 final String realName = binding.etRealName.getText().toString();
                 final String userName = binding.etUsername.getText().toString();
@@ -63,8 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.etUsername.setError("Enter your full name!");
                     return;
                 }
-                if (TextUtils.isEmpty(gender)) {
-                    binding.etUsername.setError("Enter your full name!");
+                if (validateGender()) {
                     return;
                 }
                 if (TextUtils.isEmpty(birthDate)) {
@@ -92,15 +95,21 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+//                User user = new User(email,realName,userName,gender,birthDate,address,password);
+//                reference.child(userName).setValue(user);
+//                Toast.makeText(SignUpActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SignUpActivity.this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
-                                    User user = new User(email, realName, userName, gender, birthDate, address);
-                                    String userId = task.getResult().getUser().getUid();
-                                    mRef = mRoot.child("users").child(userId);
+                                    User user = new User(email,realName,userName,gender,birthDate,address,password);
+                                    mRef = reference.child("users").child(realName);
                                     mRef.setValue(user);
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
@@ -120,5 +129,21 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public Boolean validateGender(){
+        String val = binding.etGender.getText().toString().trim();
+        if (val.isEmpty()){
+            binding.etGender.setError("Gender cannot be empty");
+            return true;
+        } else if(val.equalsIgnoreCase(Famale)){
+            binding.etGender.setError(null);
+            return true;
+        }else if(val.equalsIgnoreCase(Male)){
+            binding.etGender.setError(null);
+            return true;
+        } else {
+            binding.etGender.setError("Please fill in male or female");
+            return true;
+        }
     }
 }
