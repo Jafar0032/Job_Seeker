@@ -24,6 +24,8 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRoot, mRef;
+    private String Famale = "Famale";
+    private String Male = "Male";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,37 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String email = binding.etEmail.getText().toString();
+                final String realName = binding.etRealName.getText().toString();
+                final String userName = binding.etUsername.getText().toString();
+                final String gender = binding.etGender.getText().toString();
+                final String birthDate = binding.etBirthDate.getText().toString();
+                final String address = binding.etAdddress.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 String confirmPassword = binding.etKonfPassword.getText().toString();
-                final String fullName = binding.etUsername.getText().toString();
+
 
                 if (TextUtils.isEmpty(email)) {
                     binding.etEmail.setError("Enter your email address!");
+                    return;
+                }
+                if (TextUtils.isEmpty(userName)) {
+                    binding.etUsername.setError("Enter your user name!");
+                    return;
+                }
+                if (TextUtils.isEmpty(realName)) {
+                    binding.etUsername.setError("Enter your full name!");
+                    return;
+                }
+                if (TextUtils.isEmpty(gender)) {
+                    binding.etUsername.setError("Enter your full name!");
+                    return;
+                }
+                if (TextUtils.isEmpty(birthDate)) {
+                    binding.etUsername.setError("Enter your full name!");
+                    return;
+                }
+                if (TextUtils.isEmpty(address)) {
+                    binding.etUsername.setError("Enter your full name!");
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
@@ -54,10 +81,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(confirmPassword)) {
                     binding.etKonfPassword.setError("Enter your confirm password!");
-                    return;
-                }
-                if (TextUtils.isEmpty(fullName)) {
-                    binding.etUsername.setError("Enter your full name!");
                     return;
                 }
                 if (password.length() < 6) {
@@ -75,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SignUpActivity.this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
-                                    User user = new User(email, fullName);
+                                    User user = new User(email, realName, userName, gender, birthDate, address);
                                     String userId = task.getResult().getUser().getUid();
                                     mRef = mRoot.child("users").child(userId);
                                     mRef.setValue(user);
