@@ -3,11 +3,13 @@ package com.tugasakhirpab2.rjn.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,11 +22,16 @@ import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.databinding.ActivitySignUpBinding;
 import com.tugasakhirpab2.rjn.model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     private DatabaseReference reference, mRef;
+    private SimpleDateFormat dateFormatter;
+    private int mYear,mMonth,mDay;
     private String Famale = "Famale";
     private String Male = "Male";
 
@@ -38,6 +45,23 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         reference = mDatabase.getReference();
+
+        binding.etBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SignUpActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+//                        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+                        binding.etBirthDate.setText(String.format("%02d-%02d-%04d",dayOfMonth, month+1, year));
+                        mYear = year;
+                        mMonth = month;
+                        mDay = dayOfMonth;
+                    }
+                },mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
 
         binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +134,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SignUpActivity.this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
                                     User user = new User(email,realName,userName,gender,birthDate,address,password);
-                                    mRef = reference.child("users").child(realName);
+                                    String userId = task.getResult().getUser().getUid();
+                                    mRef = reference.child("users").child(userId);
                                     mRef.setValue(user);
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
