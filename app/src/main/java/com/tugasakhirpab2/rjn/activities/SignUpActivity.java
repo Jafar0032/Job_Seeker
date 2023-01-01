@@ -71,8 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
 //                reference = mDatabase.getReference("users");
 
                 String email = binding.etEmail.getText().toString();
-                String realName = binding.etRealName.getText().toString();
-                String userName = binding.etUsername.getText().toString();
+                String fullName = binding.etFullName.getText().toString();
                 String gender = binding.etGender.getText().toString();
                 String birthDate = binding.etBirthDate.getText().toString();
                 String address = binding.etAdddress.getText().toString();
@@ -84,23 +83,19 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.etEmail.setError("Enter your email address!");
                     return;
                 }
-                if (TextUtils.isEmpty(userName)) {
-                    binding.etUsername.setError("Enter your user name!");
-                    return;
-                }
-                if (TextUtils.isEmpty(realName)) {
-                    binding.etUsername.setError("Enter your full name!");
+                if (TextUtils.isEmpty(fullName)) {
+                    binding.etFullName.setError("Enter your full name!");
                     return;
                 }
                 if (validateGender()) {
                     return;
                 }
                 if (TextUtils.isEmpty(birthDate)) {
-                    binding.etUsername.setError("Enter your full name!");
+                    binding.etBirthDate.setError("Enter your birthdate!");
                     return;
                 }
                 if (TextUtils.isEmpty(address)) {
-                    binding.etUsername.setError("Enter your full name!");
+                    binding.etAdddress.setError("Enter your address!");
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
@@ -120,7 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-//                User user = new User(email,realName,userName,gender,birthDate,address,password);
+//                User user = new User(email,fullName,userName,gender,birthDate,address,password);
 //                reference.child(userName).setValue(user);
 //                Toast.makeText(SignUpActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -132,8 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
-                                    User user = new User(email,realName,userName,gender,birthDate,address,password);
+                                    User user = new User(email,fullName,gender,birthDate,address,password);
                                     String userId = task.getResult().getUser().getUid();
                                     mRef = reference.child("users").child(userId);
                                     mRef.setValue(user);

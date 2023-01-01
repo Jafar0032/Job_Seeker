@@ -2,8 +2,7 @@ package com.tugasakhirpab2.rjn.model;
 
 public class User {
     private String email;
-    private String realName;
-    private String userName;
+    private String fullName;
     private String gender;
     private String birthDate;
     private String address;
@@ -12,10 +11,9 @@ public class User {
     public User() {
     }
 
-    public User(String email, String realName, String userName, String gender, String birthDate, String address, String password) {
+    public User(String email, String fullName, String gender, String birthDate, String address, String password) {
         this.email = email;
-        this.realName = realName;
-        this.userName = userName;
+        this.fullName = fullName;
         this.gender = gender;
         this.birthDate = birthDate;
         this.address = address;
@@ -30,20 +28,12 @@ public class User {
         this.email = email;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getGender() {
