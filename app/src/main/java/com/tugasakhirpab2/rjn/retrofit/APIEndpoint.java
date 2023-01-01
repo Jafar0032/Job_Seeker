@@ -12,10 +12,6 @@ import retrofit2.http.Query;
 public interface APIEndpoint {
 
     // End Point Perusahaan
-<<<<<<< Updated upstream
-//    @GET("perusahaan.php")
-//    Call<>
-=======
     @GET("perusahaan.php")
     Call<PerusahaanModel> getPerusahaan();
 
@@ -30,6 +26,5 @@ public interface APIEndpoint {
     // End Point Detail Kerja
     @GET("detail.php")
     Call<DetailKerjaModel> getDetailKerja(@Query("idKerja") String idKerja);
->>>>>>> Stashed changes
 
 }
