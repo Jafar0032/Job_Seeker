@@ -156,4 +156,13 @@
         android:textSize="18sp"
         android:layout_marginTop="24dp"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_rekomendasi_pekerjaan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/tv_rekomendasi_pekerjaan"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_kerja" />
+
 </RelativeLayout>

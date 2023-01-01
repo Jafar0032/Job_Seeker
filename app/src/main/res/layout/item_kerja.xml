@@ -4,16 +4,22 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="5dp"
+    android:elevation="8dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardBackgroundColor="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/tv_fulltime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="10sp"
             android:text="# Full Time"
             android:textColor="#696969"
             android:fontFamily="@font/montserratmedium"
@@ -22,11 +28,84 @@
         
         <ImageView
             android:id="@+id/iv_logo_perusahaan"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_below="@id/tv_fulltime"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_ket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/iv_logo_perusahaan"
+            android:layout_below="@id/tv_fulltime"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UI/UX Designer"
+                android:fontFamily="@font/montserratbold"
+                android:textColor="#4E4E4E"/>
+
+            <TextView
+                android:id="@+id/tv_nana_perusahaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rafael Corp"
+                android:textColor="#B0AFAF"
+                android:fontFamily="@font/montserratsemibold"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/tv_gaji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 1.000.000/bln"
+                android:textColor="#F37362"
+                android:fontFamily="@font/montserratbold"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F4F4F4"
+            android:layout_below="@id/ll_ket"
+            android:layout_marginTop="12dp"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location"
+                android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tv_lokasi_perusahaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="South Tangerang,Banten,Indonesia"
+                android:fontFamily="@font/montserratsemibold"
+                android:textColor="#999999"
+                android:textSize="9sp"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
