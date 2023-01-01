@@ -23,6 +23,7 @@ import com.tugasakhirpab2.rjn.databinding.ActivitySignUpBinding;
 import com.tugasakhirpab2.rjn.model.User;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -46,13 +47,17 @@ public class SignUpActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         reference = mDatabase.getReference();
 
-        binding.etBirthDate.setOnClickListener(new View.OnClickListener() {
+        Calendar calendar=Calendar.getInstance();
+        mYear = calendar.get(Calendar.YEAR);
+        mMonth = calendar.get(Calendar.MONTH);
+        mDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        binding.ibDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(SignUpActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-//                        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                         binding.etBirthDate.setText(String.format("%02d-%02d-%04d",dayOfMonth, month+1, year));
                         mYear = year;
                         mMonth = month;
@@ -91,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(birthDate)) {
-                    binding.etBirthDate.setError("Enter your birthdate!");
+                    Toast.makeText(SignUpActivity.this, "Enter Your Birth Date!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(address)) {
@@ -99,19 +104,19 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    binding.etPassword.setError("Enter your password!");
+                    Toast.makeText(SignUpActivity.this, "Enter your password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(confirmPassword)) {
-                    binding.etKonfPassword.setError("Enter your confirm password!");
+                    Toast.makeText(SignUpActivity.this, "Enter your confirm password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (password.length() < 6) {
-                    binding.etPassword.setError("Password too short, enter minimum 6 characters!");
+                    Toast.makeText(SignUpActivity.this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!confirmPassword.equals(password)) {
-                    binding.etKonfPassword.setError("Password doesn't match!");
+                    Toast.makeText(SignUpActivity.this, "Password doesn't match!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
