@@ -18,14 +18,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".UbahProfilActivity"
+            android:name=".activities.UbahProfilActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ProfilActivity"
+            android:name=".activities.ProfilActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

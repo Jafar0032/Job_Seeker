@@ -38,33 +38,122 @@
         android:src="@drawable/profile"
         android:layout_alignParentEnd="true"/>
 
-    <TextView
-        android:id="@+id/image_slider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_profil"
-        android:text="INI IMAGE SLIDER (KAGEK)"
-        android:gravity="center"
-        android:layout_marginTop="45dp"/>
+    <include
+        android:id="@+id/llBanner"
+        layout="@layout/layout_banner"/>
 
     <TextView
         android:id="@+id/tv_kategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image_slider"
+        android:layout_below="@+id/llBanner"
         android:text="Kategori"
         android:textColor="@color/orange_inti"
         android:fontFamily="@font/montserratbold"
         android:textSize="18sp"
         android:layout_marginTop="16dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_kategori_komputer"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+    <RelativeLayout
+        android:id="@+id/rl_komputer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_kategori"
+        android:layout_marginTop="14dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_kategori_komputer"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/box_background"
+            android:drawableEnd="@drawable/chipss"
+            android:paddingEnd="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_kategori_komputer"
+            android:text="Komputer"
+            android:textSize="8sp"
+            android:textColor="#464646"
+            android:fontFamily="@font/montserratmedium"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_serah1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/rl_komputer"
         android:layout_below="@id/tv_kategori"
         android:layout_marginTop="14dp"
-        android:background="@drawable/box_background"
-        android:drawableTop="@drawable/chip"/>
+        android:layout_marginStart="28dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_kategori_serah1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/box_background"
+            android:drawableEnd="@drawable/chipss"
+            android:paddingEnd="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_kategori_serah1"
+            android:text="Komputer"
+            android:textSize="8sp"
+            android:textColor="#464646"
+            android:fontFamily="@font/montserratmedium"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_serah2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_komputer"
+        android:layout_marginTop="14dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_kategori_serah2"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/box_background"
+            android:drawableEnd="@drawable/chipss"
+            android:paddingEnd="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_kategori_serah2"
+            android:text="Komputer"
+            android:textSize="8sp"
+            android:textColor="#464646"
+            android:fontFamily="@font/montserratmedium"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_rekomendasi_pekerjaan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_serah2"
+        android:text="Rekomendasi Pekerjaan"
+        android:textColor="@color/orange_inti"
+        android:fontFamily="@font/montserratbold"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
 
 </RelativeLayout>

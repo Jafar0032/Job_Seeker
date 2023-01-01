@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -45,12 +46,12 @@ public class SignUpActivity extends AppCompatActivity {
 //                mDatabase = FirebaseDatabase.getInstance();
 //                reference = mDatabase.getReference("users");
 
-                final String email = binding.etEmail.getText().toString();
-                final String realName = binding.etRealName.getText().toString();
-                final String userName = binding.etUsername.getText().toString();
-                final String gender = binding.etGender.getText().toString();
-                final String birthDate = binding.etBirthDate.getText().toString();
-                final String address = binding.etAdddress.getText().toString();
+                String email = binding.etEmail.getText().toString();
+                String realName = binding.etRealName.getText().toString();
+                String userName = binding.etUsername.getText().toString();
+                String gender = binding.etGender.getText().toString();
+                String birthDate = binding.etBirthDate.getText().toString();
+                String address = binding.etAdddress.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 String confirmPassword = binding.etKonfPassword.getText().toString();
 
@@ -113,8 +114,8 @@ public class SignUpActivity extends AppCompatActivity {
                                     mRef.setValue(user);
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
-                                    finish();
                                 } else {
+                                    Log.w(SignUpActivity.class.getSimpleName(), "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(SignUpActivity.this, "Sign Up failed!", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -137,10 +138,10 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         } else if(val.equalsIgnoreCase(Famale)){
             binding.etGender.setError(null);
-            return true;
+            return false;
         }else if(val.equalsIgnoreCase(Male)){
             binding.etGender.setError(null);
-            return true;
+            return false;
         } else {
             binding.etGender.setError("Please fill in male or female");
             return true;
