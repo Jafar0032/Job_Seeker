@@ -32,6 +32,8 @@ public class ProfilActivity extends AppCompatActivity {
         binding = ActivityProfilBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        showUserData();
+
         binding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +107,7 @@ public class ProfilActivity extends AppCompatActivity {
                                             intent.putExtra("password", passwordfromDB);
 
                                             startActivity(intent);
+                                            finish();
                                         } else {
                                             Toast.makeText(ProfilActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                         }

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tugasakhirpab2.rjn.activities.ProfilActivity;
 import com.tugasakhirpab2.rjn.activities.SignInActivity;
 import com.tugasakhirpab2.rjn.activities.SignUpActivity;
 import com.tugasakhirpab2.rjn.databinding.FragmentProfileBinding;
@@ -30,6 +31,14 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
 
         mAuth = FirebaseAuth.getInstance();
+
+        binding.cvPersonal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ProfilActivity.class));
+                getActivity().finish();
+            }
+        });
 
         binding.cvLogout.setOnClickListener(new View.OnClickListener() {
             @Override

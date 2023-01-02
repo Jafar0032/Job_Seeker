@@ -77,7 +77,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                 String email = binding.etEmail.getText().toString();
                 String fullName = binding.etFullName.getText().toString();
-                String gender = binding.etGender.getText().toString();
+
+                String gender = binding.spinGender.getSelectedItem().toString();
+
                 String birthDate = binding.etBirthDate.getText().toString();
                 String address = binding.etAdddress.getText().toString();
                 String password = binding.etPassword.getText().toString();
@@ -92,9 +94,9 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.etFullName.setError("Enter your full name!");
                     return;
                 }
-                if (validateGender()) {
-                    return;
-                }
+//                if (validateGender()) {
+//                    return;
+//                }
                 if (TextUtils.isEmpty(birthDate)) {
                     Toast.makeText(SignUpActivity.this, "Enter Your Birth Date!", Toast.LENGTH_SHORT).show();
                     return;
@@ -155,20 +157,20 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-    public Boolean validateGender(){
-        String val = binding.etGender.getText().toString().trim();
-        if (val.isEmpty()){
-            binding.etGender.setError("Gender cannot be empty");
-            return true;
-        } else if(val.equalsIgnoreCase(Famale)){
-            binding.etGender.setError(null);
-            return false;
-        }else if(val.equalsIgnoreCase(Male)){
-            binding.etGender.setError(null);
-            return false;
-        } else {
-            binding.etGender.setError("Please fill in male or female");
-            return true;
-        }
-    }
+//    public Boolean validateGender(){
+//        String val = binding.etGender.getText().toString().trim();
+//        if (val.isEmpty()){
+//            binding.etGender.setError("Gender cannot be empty");
+//            return true;
+//        } else if(val.equalsIgnoreCase(Famale)){
+//            binding.etGender.setError(null);
+//            return false;
+//        }else if(val.equalsIgnoreCase(Male)){
+//            binding.etGender.setError(null);
+//            return false;
+//        } else {
+//            binding.etGender.setError("Please fill in male or female");
+//            return true;
+//        }
+//    }
 }
