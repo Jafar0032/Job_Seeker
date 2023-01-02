@@ -26,35 +26,35 @@ public class UbahProfilActivity extends AppCompatActivity {
         showData();
     }
 
-    public boolean isNameChanged(){
-        if (!nameUser.equals(editName.getText().toString())){
-            reference.child(usernameUser).child("name").setValue(editName.getText().toString());
-            nameUser = editName.getText().toString();
-            return true;
-        } else{
-            return false;
-        }
-    }
-
-    public boolean isEmailChanged(){
-        if (!emailUser.equals(editName.getText().toString())){
-            reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
-            emailUser = editEmail.getText().toString();
-            return true;
-        } else{
-            return false;
-        }
-    }
-
-    public boolean isPasswordChanged(){
-        if (!passwordUser.equals(editPassword.getText().toString())){
-            reference.child(usernameUser).child("password").setValue(editPassword.getText().toString());
-            passwordUser = editPassword.getText().toString();
-            return true;
-        } else{
-            return false;
-        }
-    }
+//    public boolean isNameChanged(){
+//        if (!nameUser.equals(editName.getText().toString())){
+//            reference.child(usernameUser).child("name").setValue(editName.getText().toString());
+//            nameUser = editName.getText().toString();
+//            return true;
+//        } else{
+//            return false;
+//        }
+//    }
+//
+//    public boolean isEmailChanged(){
+//        if (!emailUser.equals(editName.getText().toString())){
+//            reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
+//            emailUser = editEmail.getText().toString();
+//            return true;
+//        } else{
+//            return false;
+//        }
+//    }
+//
+//    public boolean isPasswordChanged(){
+//        if (!passwordUser.equals(editPassword.getText().toString())){
+//            reference.child(usernameUser).child("password").setValue(editPassword.getText().toString());
+//            passwordUser = editPassword.getText().toString();
+//            return true;
+//        } else{
+//            return false;
+//        }
+//    }
 
     private void showData() {
     }

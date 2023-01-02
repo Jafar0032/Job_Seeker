@@ -53,7 +53,7 @@
                 android:textColor="#4E4E4E"/>
 
             <TextView
-                android:id="@+id/tv_nana_perusahaan"
+                android:id="@+id/tv_nama_perusahaan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rafael Corp"
