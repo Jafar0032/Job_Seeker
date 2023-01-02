@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(email)) {
                     binding.etEmail.setError("Enter your email address!");
                     return;
-                }else if (TextUtils.isEmpty(password)) {
+                } else if (TextUtils.isEmpty(password)) {
                     binding.etPassword.setError("Enter your password!");
                     return;
                 } else {
@@ -70,9 +70,9 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    private Boolean validateEmail(){
+    private Boolean validateEmail() {
         String val = binding.etEmail.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             binding.etEmail.setError("Email cannot be empty");
             return false;
         } else {
@@ -81,9 +81,9 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean validatePassword(){
+    private Boolean validatePassword() {
         String val = binding.etPassword.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             binding.etPassword.setError("Password cannot be empty");
             return false;
         } else {
@@ -92,7 +92,7 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
-    private void checkUser(){
+    private void checkUser() {
         mAuth = FirebaseAuth.getInstance();
 
         String email = binding.etEmail.getText().toString();
@@ -103,12 +103,57 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+//                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
+                            String userId = task.getResult().getUser().getUid();
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+                            Query checkUserInDatabase = reference.orderByChild(userId);
+
+                            checkUserInDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    if (snapshot.exists()) {
+                                        String passwordFromDB = snapshot.child(userId).child("password").getValue(String.class);
+
+                                        if (passwordFromDB.equalsIgnoreCase(password)) {
+//                                            Pass the data using intent
+
+                                            String emailFromDB = snapshot.child(userId).child("email").getValue(String.class);
+                                            String fullNameFromDB = snapshot.child(userId).child("fullName").getValue(String.class);
+                                            String genderFromDB = snapshot.child(userId).child("gender").getValue(String.class);
+                                            String birthDateFromDB = snapshot.child(userId).child("birthDate").getValue(String.class);
+                                            String addressFromDB = snapshot.child(userId).child("address").getValue(String.class);
+                                            String passwordfromDB = snapshot.child(userId).child("password").getValue(String.class);
+
+                                            Intent intent = new Intent(SignInActivity.this, ProfilActivity.class);
+
+                                            intent.putExtra("email", emailFromDB);
+                                            intent.putExtra("fullName", fullNameFromDB);
+                                            intent.putExtra("gender", genderFromDB);
+                                            intent.putExtra("birthDate", birthDateFromDB);
+                                            intent.putExtra("address", addressFromDB);
+                                            intent.putExtra("password", passwordfromDB);
+
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(SignInActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        Toast.makeText(SignInActivity.this, "User Id Doesn't Exist", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         } else {
                             Toast.makeText(SignInActivity.this, "Authentication failed, check your email and password or sign up", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
 //
