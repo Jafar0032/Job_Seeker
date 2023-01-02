@@ -12,11 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
-import com.tugasakhirpab2.rjn.model.PerusahaanModel;
 
-import java.awt.font.NumericShaper;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +49,21 @@ public class KerjaAdapter extends RecyclerView.Adapter<KerjaAdapter.ViewHolder> 
         KerjaModel.Result result = results.get(position);
         holder.tvFulltime.setText(fullTimeChecker(result.getFulltime()));
         holder.tvJob.setText(result.getJobDesk());
-        holder.tvNamaPerusahaan.setText(result.getIdPerusahaan());
+        holder.tvNamaPerusahaan.setText(result.getNamaPerusahaan());
         holder.tvGaji.setText(formatRupiah.format(Double.parseDouble(result.getGaji())));
-        holder.tvLokasiPerusahaan.setText(result.getIdPerusahaan());
-//        Glide.with(holder.itemView.getContext())
-//                .load(result.get)
+        holder.tvLokasiPerusahaan.setText(result.getAlamat());
+        Glide.with(holder.itemView.getContext())
+                .load(result.getLogoPerusahaan())
+                .placeholder(R.drawable.img_placeholder)
+                .fitCenter()
+                .into(holder.ivLogoPerusahaan);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(result);
+            }
+        });
     }
 
     @Override

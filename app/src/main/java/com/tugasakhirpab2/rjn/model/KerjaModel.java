@@ -13,8 +13,10 @@ public class KerjaModel {
     public class Result
     {
         private String idKerja;
-        private String idKategori;
-        private String idPerusahaan;
+        private String namaPerusahaan;
+        private String logoPerusahaan;
+        private String alamat;
+        private String namaKategori;
         private String jobDesk;
         private String gaji;
         private String fulltime;
@@ -23,12 +25,20 @@ public class KerjaModel {
             return idKerja;
         }
 
-        public String getIdKategori() {
-            return idKategori;
+        public String getNamaPerusahaan() {
+            return namaPerusahaan;
         }
 
-        public String getIdPerusahaan() {
-            return idPerusahaan;
+        public String getLogoPerusahaan() {
+            return logoPerusahaan;
+        }
+
+        public String getAlamat() {
+            return alamat;
+        }
+
+        public String getNamaKategori() {
+            return namaKategori;
         }
 
         public String getJobDesk() {
