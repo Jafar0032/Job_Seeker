@@ -23,7 +23,7 @@
         android:id="@+id/tv_username_halo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nicolas !"
+        tools:text="Nicolas !"
         android:textSize="18sp"
         android:textColor="@color/orange_inti"
         android:fontFamily="@font/montserratbold"

@@ -8,19 +8,30 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.activities.ProfilActivity;
 import com.tugasakhirpab2.rjn.activities.SignInActivity;
 import com.tugasakhirpab2.rjn.activities.SignUpActivity;
 import com.tugasakhirpab2.rjn.databinding.FragmentProfileBinding;
+import com.tugasakhirpab2.rjn.model.User;
 
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     private FirebaseAuth mAuth;
+    private DatabaseReference mRoot, mRef;
+
+    private String mFullname;
+    private String userId;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,27 +39,45 @@ public class ProfileFragment extends Fragment {
                 new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-
-        binding.cvPersonal.setOnClickListener(new View.OnClickListener() {
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ProfilActivity.class));
-                getActivity().finish();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                mFullname = user.getFullName();
+                binding.tvFullname.setText(mFullname);
+                binding.llPersonalData.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), ProfilActivity.class);
+                        intent.putExtra("address", user.getAddress());
+                        intent.putExtra("birthDate", user.getBirthDate());
+                        intent.putExtra("email", user.getEmail());
+                        intent.putExtra("fullName", user.getFullName());
+                        intent.putExtra("gender", user.getGender());
+                        intent.putExtra("password", user.getPassword());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                mFullname = "Anonymous";
             }
         });
 
-        binding.cvLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                startActivity(new Intent(getActivity(), SignUpActivity.class));
-                getActivity().finish();
-            }
-        });
-        return root;
+
     }
 
     @Override

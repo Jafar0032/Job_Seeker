@@ -2,11 +2,13 @@ package com.tugasakhirpab2.rjn.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
 import com.tugasakhirpab2.rjn.adapter.SliderPagerAdapter;
@@ -23,6 +31,7 @@ import com.tugasakhirpab2.rjn.decoration.BannerSlider;
 import com.tugasakhirpab2.rjn.decoration.SliderIndicator;
 import com.tugasakhirpab2.rjn.fragmentext.FragmentSlider;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
+import com.tugasakhirpab2.rjn.model.User;
 import com.tugasakhirpab2.rjn.retrofit.APIService;
 
 import java.util.ArrayList;
@@ -41,6 +50,12 @@ public class HomeFragment extends Fragment {
     private KerjaAdapter kerjaAdapter;
     private List<KerjaModel.Result> results = new ArrayList<>();
 
+    private FirebaseAuth mAuth;
+    private DatabaseReference mRoot, mRef;
+
+    private String mFullname;
+    private String userId;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -53,6 +68,24 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                mFullname = user.getFullName();
+                binding.tvUsernameHalo.setText(mFullname + " !");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                mFullname = "Anonymous";
+            }
+        });
 
         setupSlider();
         getDataFromAPI();

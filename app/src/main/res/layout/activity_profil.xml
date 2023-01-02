@@ -1,171 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
-    android:orientation="vertical"
-    tools:context=".activities.ProfilActivity">
+    android:layout_margin="24dp"
+    tools:context=".activities.ProfilActivity"
+    android:background="#FBFBFB">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        tools:src="@drawable/ic_baseline_person_24" />
+    <LinearLayout
+        android:id="@+id/ll_pocok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="18dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left_24"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Data"
+            android:textColor="#F37362"
+            android:fontFamily="@font/montserratbold"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="80dp"/>
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:layout_gravity="end"
+            android:layout_marginStart="80dp"/>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:elevation="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/ll_pocok"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/iv_profil"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/img_placeholder"/>
+
+    </androidx.cardview.widget.CardView>
 
     <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#DDDDDD"
-        android:visibility="visible" />
+        android:layout_height="1dp"
+        android:background="#F4F4F4"
+        android:layout_below="@id/cv_profil"
+        android:layout_marginTop="34dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/ll_full_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/line"
+        android:layout_marginTop="42dp"
+        android:layout_marginStart="34dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama : "
-            android:textSize="17sp" />
+            android:text="Nama"
+            android:textColor="#979797"
+            android:fontFamily="@font/montserratmedium"
+            android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tvNama"
+            android:id="@+id/tv_full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
-    </LinearLayout>
+            android:text="Nicolas Rafael Ja'far"
+            android:textColor="#454545"
+            android:fontFamily="@font/montserratsemibold"
+            android:layout_marginStart="97dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email : "
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password : "
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
     </LinearLayout>
 
     <View
+        android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#DDDDDD"
-        android:visibility="visible" />
+        android:layout_height="1dp"
+        android:background="#F4F4F4"
+        android:layout_below="@id/ll_full_name"
+        android:layout_marginTop="34dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jenis Kelamin : "
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvJenKel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tanggal Lahir : "
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvTglLahir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alamat : "
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvAlamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            tools:text="Nama : " />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/ll_jenis_kelamin"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="Edit Profile"
-        android:textSize="18sp"
-        app:cornerRadius="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/line1"
+        android:layout_marginTop="42dp"
+        android:layout_marginStart="34dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin"
+            android:textColor="#979797"
+            android:fontFamily="@font/montserratmedium"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_jenis_kelamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pria"
+            android:textColor="#454545"
+            android:fontFamily="@font/montserratsemibold"
+            android:layout_marginStart="40dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_tanggal_lahir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ll_jenis_kelamin"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginStart="34dp">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Lahir"
+            android:textColor="#979797"
+            android:fontFamily="@font/montserratmedium"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_tanggal_lahir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14 April 2003"
+            android:textColor="#454545"
+            android:fontFamily="@font/montserratsemibold"
+            android:layout_marginStart="42dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_alamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ll_tanggal_lahir"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="34dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textColor="#979797"
+            android:fontFamily="@font/montserratmedium"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_alamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jl.Veteran Lr.Sahara Agung No.357"
+            android:textColor="#454545"
+            android:fontFamily="@font/montserratsemibold"
+            android:layout_marginStart="88dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
