@@ -127,7 +127,7 @@ public class SignInActivity extends AppCompatActivity {
                                             String addressFromDB = snapshot.child(userId).child("address").getValue(String.class);
                                             String passwordfromDB = snapshot.child(userId).child("password").getValue(String.class);
 
-                                            Intent intent = new Intent(SignInActivity.this, ProfilActivity.class);
+                                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
 
                                             intent.putExtra("email", emailFromDB);
                                             intent.putExtra("fullName", fullNameFromDB);
