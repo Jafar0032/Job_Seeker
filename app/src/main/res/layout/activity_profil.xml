@@ -12,35 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="18dp">
+        android:layout_margin="18dp">
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_arrow_left_24"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvPersonalData"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tvPersonalData"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Personal Data"
             android:textColor="#F37362"
             android:fontFamily="@font/montserratbold"
             android:textSize="20sp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
+            app:layout_constraintHorizontal_weight="8"
             app:layout_constraintStart_toEndOf="@id/iv_back"
             app:layout_constraintEnd_toStartOf="@+id/iv_edit"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/iv_edit"
-            android:layout_width="25dp"
+            android:layout_width="0dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tvPersonalData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -69,7 +72,7 @@
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="#F4F4F4"
         android:layout_below="@id/cv_profil"
         android:layout_marginTop="34dp"/>
@@ -102,21 +105,13 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F4F4F4"
-        android:layout_below="@id/ll_full_name"
-        android:layout_marginTop="34dp"/>
-
     <LinearLayout
         android:id="@+id/ll_jenis_kelamin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/line1"
-        android:layout_marginTop="42dp"
+        android:layout_below="@id/ll_full_name"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="34dp">
 
         <TextView

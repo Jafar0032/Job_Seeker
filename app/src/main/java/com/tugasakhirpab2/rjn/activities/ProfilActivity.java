@@ -78,22 +78,6 @@ public class ProfilActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-//        showUserData();
     }
-
-//    private void showUserData() {
-//        Intent intent = getIntent();
-//
-//        String fullName = intent.getStringExtra("fullName");
-//        String gender = intent.getStringExtra("gender");
-//        String birthDate = intent.getStringExtra("birthDate");
-//        String address = intent.getStringExtra("address");
-//
-//        binding.tvFullName.setText(fullName);
-//        binding.tvJenisKelamin.setText(gender);
-//        binding.tvTanggalLahir.setText(birthDate);
-//        binding.tvAlamat.setText(address);
-//    }
 
 }

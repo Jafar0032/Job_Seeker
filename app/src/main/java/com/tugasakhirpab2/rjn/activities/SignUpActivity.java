@@ -134,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    User user = new User(address,birthDate,email,fullName,gender,password);
+                                    User user = new User(address,birthDate,email,fullName,gender);
                                     String userId = task.getResult().getUser().getUid();
                                     mRef = mRoot.child("users").child(userId);
                                     mRef.setValue(user);
