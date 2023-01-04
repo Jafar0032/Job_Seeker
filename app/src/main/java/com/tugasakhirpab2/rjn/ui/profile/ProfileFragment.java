@@ -67,12 +67,6 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getActivity(), ProfilActivity.class);
-                        intent.putExtra("address", user.getAddress());
-                        intent.putExtra("birthDate", user.getBirthDate());
-                        intent.putExtra("email", user.getEmail());
-                        intent.putExtra("fullName", user.getFullName());
-                        intent.putExtra("gender", user.getGender());
-                        intent.putExtra("password", user.getPassword());
                         startActivity(intent);
                     }
                 });

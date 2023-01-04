@@ -21,7 +21,8 @@
             android:value="@integer/google_play_services_version"/>
         <activity
             android:name=".activities.UbahProfilActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

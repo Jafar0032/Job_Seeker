@@ -22,13 +22,17 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.databinding.ActivityUbahProfilBinding;
+import com.tugasakhirpab2.rjn.model.User;
 
 import java.util.Calendar;
 
 public class UbahProfilActivity extends AppCompatActivity {
     ActivityUbahProfilBinding binding;
-    DatabaseReference reference;
+    private DatabaseReference mRoot, mRef;
     private FirebaseAuth mAuth;
+    private String eFullname, eGender, eBirthDate, eAddress;
+
+    private String userId;
     private int mYear, mMonth, mDay;
 
     @Override
@@ -59,8 +63,6 @@ public class UbahProfilActivity extends AppCompatActivity {
             }
         });
 
-        showData();
-
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,89 +71,46 @@ public class UbahProfilActivity extends AppCompatActivity {
         });
     }
 
-    private void showData() {
-        Intent intent = getIntent();
-
-        String email = intent.getStringExtra("email");
-        String fullName = intent.getStringExtra("fullName");
-        String gender = intent.getStringExtra("gender");
-        String birthDate = intent.getStringExtra("birthDate");
-        String address = intent.getStringExtra("address");
-        String password = intent.getStringExtra("password");
-
-        binding.etEmail.setText(email);
-        binding.etFullName.setText(fullName);
-        binding.etGender.setText(gender);
-        binding.etBirthDate.setText(birthDate);
-        binding.etAdddress.setText(address);
-        binding.etPassword.setText(password);
-    }
-
     private void editDataUser() {
-
         mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                eFullname = user.getFullName();
+                eGender = user.getGender();
+                eBirthDate = user.getBirthDate();
+                eAddress = user.getAddress();
 
-        String email = binding.etEmail.getText().toString();
-        String password = binding.etPassword.getText().toString();
+                binding.etFullName.setText(eFullname);
+                binding.etGender.setText(eGender);
+                binding.etBirthDate.setText(eBirthDate);
+                binding.etAdddress.setText(eAddress);
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(UbahProfilActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-//                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-//                            startActivity(intent);
-//                            finish();
-                            String userId = task.getResult().getUser().getUid();
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-                            Query checkUserInDatabase = reference.orderByChild(userId);
+                String fullName = String.valueOf(mRef.child("fullName").setValue(binding.etFullName.getText().toString()));
+                String gender = String.valueOf(mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString()));
+                String birthDate = String.valueOf(mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString()));
+                String address = String.valueOf(mRef.child("address").setValue(binding.etAdddress.getText().toString()));
 
-                            checkUserInDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
 
-                                    if (snapshot.exists()) {
-                                        String passwordFromDB = snapshot.child(userId).child("password").getValue(String.class);
+                intent.putExtra("fullName", fullName);
+                intent.putExtra("gender", gender);
+                intent.putExtra("birthDate", birthDate);
+                intent.putExtra("address", address);
 
-                                        if (passwordFromDB.equalsIgnoreCase(password)) {
-//                                            Pass the data using intent
+                startActivity(intent);
+                finish();
 
-                                            String updateeEmailFromDB = String.valueOf(reference.child(userId).child("email").setValue(binding.etEmail.getText().toString()));
-                                            String updateFullNameFromDB = String.valueOf(reference.child(userId).child("fullName").setValue(binding.etFullName.getText().toString()));
-                                            String updateGenderFromDB = String.valueOf(reference.child(userId).child("gender").setValue(binding.spinGender.getSelectedItem().toString()));
-                                            String updateBirthDateFromDB = String.valueOf(reference.child(userId).child("birthDate").setValue(binding.etBirthDate.getText().toString()));
-                                            String updateAddressFromDB = String.valueOf(reference.child(userId).child("address").setValue(binding.etAdddress.getText().toString()));
-                                            String updatepPasswordfromDB = String.valueOf(reference.child(userId).child("password").setValue(binding.etPassword.getText().toString()));
+            }
 
-                                            Intent intent = new Intent(UbahProfilActivity.this, SignInActivity.class);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                                            intent.putExtra("email", updateeEmailFromDB);
-                                            intent.putExtra("fullName", updateFullNameFromDB);
-                                            intent.putExtra("gender", updateGenderFromDB);
-                                            intent.putExtra("birthDate", updateBirthDateFromDB);
-                                            intent.putExtra("address", updateAddressFromDB);
-                                            intent.putExtra("password", updatepPasswordfromDB);
-
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            Toast.makeText(UbahProfilActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                                        }
-                                    } else {
-                                        Toast.makeText(UbahProfilActivity.this, "User Id Doesn't Exist", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                        } else {
-                            Toast.makeText(UbahProfilActivity.this, "Authentication failed, check your email and password or sign up", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
+            }
+        });
     }
 }
