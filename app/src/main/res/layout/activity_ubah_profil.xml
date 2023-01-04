@@ -8,8 +8,7 @@
     android:padding="20dp"
     tools:context=".activities.UbahProfilActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ll_pocok"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,32 +16,36 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_left_24"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvPersonalData"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tvPersonalData"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Edit Personal Data"
             android:fontFamily="@font/montserratbold"
             android:textColor="@color/primary"
             android:textSize="20sp"
+            android:layout_weight="9"
             android:layout_gravity="center_horizontal"
             app:layout_constraintStart_toEndOf="@id/iv_back"
             app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tvTitle"
-        app:cardCornerRadius="20dp">
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F7F7F7"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="20dp">
 
         <ScrollView
             android:layout_width="match_parent"

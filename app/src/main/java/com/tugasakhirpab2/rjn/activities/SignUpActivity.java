@@ -30,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
-    private DatabaseReference reference, mRef;
+    private DatabaseReference mRoot, mRef;
     private SimpleDateFormat dateFormatter;
     private int mYear,mMonth,mDay;
     private String Famale = "Famale";
@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
-        reference = mDatabase.getReference();
+        mRoot = mDatabase.getReference();
 
         Calendar calendar=Calendar.getInstance();
         mYear = calendar.get(Calendar.YEAR);
@@ -134,9 +134,9 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    User user = new User(email,fullName,gender,birthDate,address,password);
+                                    User user = new User(address,birthDate,email,fullName,gender,password);
                                     String userId = task.getResult().getUser().getUid();
-                                    mRef = reference.child("users").child(userId);
+                                    mRef = mRoot.child("users").child(userId);
                                     mRef.setValue(user);
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
