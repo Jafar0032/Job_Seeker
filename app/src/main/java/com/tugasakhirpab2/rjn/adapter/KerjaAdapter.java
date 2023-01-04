@@ -100,4 +100,5 @@ public class KerjaAdapter extends RecyclerView.Adapter<KerjaAdapter.ViewHolder> 
             return "# Part Time";
         return "null";
     }
+
 }

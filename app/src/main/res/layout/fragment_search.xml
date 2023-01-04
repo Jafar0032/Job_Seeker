@@ -4,25 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.search.SearchFragment"
+    android:paddingVertical="16dp"
+    android:paddingHorizontal="24dp"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/tv_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Search"
+        android:text="Search"
         android:textSize="18sp"
         android:textColor="@color/orange_inti"
         android:fontFamily="@font/montserratbold"
-        android:layout_marginTop="22dp"
-        android:layout_marginStart="22dp"/>
+        android:layout_marginTop="22dp"/>
+    
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/sv_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:queryHint="Search here..."
+        android:background="@drawable/search_view_bg"
+        android:layout_below="@id/tv_search"
+        app:iconifiedByDefault="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_below="@id/tv_search"
+        android:layout_below="@id/sv_search"
         tools:itemCount="1"
         tools:listitem="@layout/item_kerja" />
 
