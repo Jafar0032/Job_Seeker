@@ -4,28 +4,19 @@ import java.util.List;
 
 public class DetailKerjaModel {
 
-    private List<Result> result;
+    private String idKerja;
+    private String deskripsi;
+    private String skillReq;
 
-    public List<Result> getResult() {
-        return result;
+    public String getIdKerja() {
+        return idKerja;
     }
 
-    public class Result
-    {
-        private String idKerja;
-        private String deskripsi;
-        private String skillReq;
+    public String getDeskripsi() {
+        return deskripsi;
+    }
 
-        public String getIdKerja() {
-            return idKerja;
-        }
-
-        public String getDeskripsi() {
-            return deskripsi;
-        }
-
-        public String getSkillReq() {
-            return skillReq;
-        }
+    public String getSkillReq() {
+        return skillReq;
     }
 }

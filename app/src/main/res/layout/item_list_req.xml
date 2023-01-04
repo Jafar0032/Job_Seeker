@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_req"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Anjas"
+    android:textColor="#5A5A5A"
+    android:fontFamily="@font/montserratmedium"
+    android:drawableStart="@drawable/ic_baseline_circle_24"
+    android:drawablePadding="14dp"
+    android:paddingVertical="3dp"/>
