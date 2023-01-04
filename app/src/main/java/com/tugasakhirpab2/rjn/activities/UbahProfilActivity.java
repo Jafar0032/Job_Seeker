@@ -63,10 +63,21 @@ public class UbahProfilActivity extends AppCompatActivity {
             }
         });
 
+        showUserData();
+
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editDataUser();
+            }
+        });
+
+        binding.ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -79,16 +90,6 @@ public class UbahProfilActivity extends AppCompatActivity {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                eFullname = user.getFullName();
-                eGender = user.getGender();
-                eBirthDate = user.getBirthDate();
-                eAddress = user.getAddress();
-
-                binding.etFullName.setText(eFullname);
-                binding.etGender.setText(eGender);
-                binding.etBirthDate.setText(eBirthDate);
-                binding.etAdddress.setText(eAddress);
 
                 String fullName = String.valueOf(mRef.child("fullName").setValue(binding.etFullName.getText().toString()));
                 String gender = String.valueOf(mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString()));
@@ -105,6 +106,34 @@ public class UbahProfilActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void showUserData() {
+        mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String nama, jenisKelamin, birthDate, address;
+                User user = snapshot.getValue(User.class);
+                nama = user.getFullName();
+                jenisKelamin = user.getGender();
+                birthDate = user.getBirthDate();
+                address = user.getAddress();
+
+                binding.etFullName.setText(nama);
+                binding.etGender.setText(jenisKelamin);
+                binding.etBirthDate.setText(birthDate);
+                binding.etAdddress.setText(address);
             }
 
             @Override

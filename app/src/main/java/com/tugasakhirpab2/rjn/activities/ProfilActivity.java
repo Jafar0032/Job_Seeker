@@ -72,12 +72,10 @@ public class ProfilActivity extends AppCompatActivity {
         binding.ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(ProfilActivity.this, UbahProfilActivity.class);
-                intent.putExtra("fullName", String.valueOf(binding.tvFullName));
-                intent.putExtra("gender", String.valueOf(binding.tvJenisKelamin));
-                intent.putExtra("fulbirthDatelName", String.valueOf(binding.tvTanggalLahir));
-                intent.putExtra("address", String.valueOf(binding.tvAlamat));
                 startActivity(intent);
+                finish();
             }
         });
 

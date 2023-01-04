@@ -95,7 +95,7 @@
             android:id="@+id/tv_full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nicolas Rafael Ja'far"
+            android:text="Loading..."
             android:textColor="#454545"
             android:fontFamily="@font/montserratsemibold"
             android:layout_marginStart="97dp"/>
@@ -131,7 +131,7 @@
             android:id="@+id/tv_jenis_kelamin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pria"
+            android:text="Loading..."
             android:textColor="#454545"
             android:fontFamily="@font/montserratsemibold"
             android:layout_marginStart="40dp"/>
@@ -159,7 +159,7 @@
             android:id="@+id/tv_tanggal_lahir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="14 April 2003"
+            android:text="Loading..."
             android:textColor="#454545"
             android:fontFamily="@font/montserratsemibold"
             android:layout_marginStart="42dp"/>
@@ -187,7 +187,7 @@
             android:id="@+id/tv_alamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jl.Veteran Lr.Sahara Agung No.357"
+            android:text="Loading..."
             android:textColor="#454545"
             android:fontFamily="@font/montserratsemibold"
             android:layout_marginStart="88dp"/>
