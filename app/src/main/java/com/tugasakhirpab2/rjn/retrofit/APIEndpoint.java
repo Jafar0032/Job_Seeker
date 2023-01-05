@@ -17,4 +17,8 @@ public interface APIEndpoint {
     @GET("detail.php")
     Call<DetailKerjaModel> getDetailKerja(@Query("idKerja") String idKerja);
 
+    // End Point Kategori Komputer
+    @GET("kategorikomputer.php")
+    Call<KerjaModel> getKategoriKomputer();
+
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CVActivity"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="16dp">
+
+    <EditText
+        android:id="@+id/et_tempat_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Click Twice to select the file"
+        android:background="@drawable/search_view_bg"
+        android:padding="16dp"
+        android:fontFamily="@font/montserratmedium"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.02"
+        android:focusable="false"/>
+
+    <Button
+        android:id="@+id/btn_upload_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_tempat_upload"
+        android:layout_marginTop="24dp"
+        android:text="Upload File"
+        android:textAllCaps="false"
+        android:fontFamily="@font/montserratsemibold"/>
+
+    <Button
+        android:id="@+id/btn_liat_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_upload_file"
+        android:layout_marginTop="18dp"
+        android:text="Retrieve File"
+        android:textAllCaps="false"
+        android:fontFamily="@font/montserratsemibold"/>
+
+</RelativeLayout>

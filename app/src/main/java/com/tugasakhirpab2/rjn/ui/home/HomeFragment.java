@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.Intent_Key;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.activities.DetailKerjaActivity;
+import com.tugasakhirpab2.rjn.activities.KomputerActivity;
 import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
 import com.tugasakhirpab2.rjn.adapter.SliderPagerAdapter;
 import com.tugasakhirpab2.rjn.databinding.FragmentHomeBinding;
@@ -86,6 +87,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 mFullname = "Anonymous";
+            }
+        });
+
+        binding.btnKategoriKomputer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), KomputerActivity.class);
+                startActivity(intent);
             }
         });
 

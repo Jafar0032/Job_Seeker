@@ -45,8 +45,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     // Firebase Realtime Database
     implementation 'com.google.firebase:firebase-database'
+    // Firebase Storage
+    implementation 'com.google.firebase:firebase-storage'
     // Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.firebaseui:firebase-ui-database:8.0.2'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -61,6 +64,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
     //Image Circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //PDF Viewer
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'

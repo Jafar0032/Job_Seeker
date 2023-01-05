@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.R;
+import com.tugasakhirpab2.rjn.activities.CVActivity;
 import com.tugasakhirpab2.rjn.activities.ProfilActivity;
 import com.tugasakhirpab2.rjn.activities.SignInActivity;
 import com.tugasakhirpab2.rjn.activities.SignUpActivity;
@@ -82,6 +83,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showDialog();
+            }
+        });
+
+        binding.llCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CVActivity.class);
+                startActivity(intent);
             }
         });
 
