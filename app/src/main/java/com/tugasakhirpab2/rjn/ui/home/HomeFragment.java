@@ -25,8 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tugasakhirpab2.rjn.Intent_Key;
 import com.tugasakhirpab2.rjn.R;
+import com.tugasakhirpab2.rjn.activities.AkuntansiActivity;
+import com.tugasakhirpab2.rjn.activities.ArsitekturActivity;
+import com.tugasakhirpab2.rjn.activities.DesignActivity;
 import com.tugasakhirpab2.rjn.activities.DetailKerjaActivity;
+import com.tugasakhirpab2.rjn.activities.EngineeringActivity;
+import com.tugasakhirpab2.rjn.activities.HukumActivity;
 import com.tugasakhirpab2.rjn.activities.KomputerActivity;
+import com.tugasakhirpab2.rjn.activities.MarketingActivity;
+import com.tugasakhirpab2.rjn.activities.PariwisataActivity;
 import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
 import com.tugasakhirpab2.rjn.adapter.SliderPagerAdapter;
 import com.tugasakhirpab2.rjn.databinding.FragmentHomeBinding;
@@ -94,6 +101,62 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), KomputerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriAkuntansi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AkuntansiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriMarketing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MarketingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriDesign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DesignActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriArsitektur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ArsitekturActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriPariwisata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PariwisataActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriHukum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HukumActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnKategoriEngineering.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EngineeringActivity.class);
                 startActivity(intent);
             }
         });

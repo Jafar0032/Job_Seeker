@@ -6,8 +6,9 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage"/>
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,62 @@
         android:theme="@style/Theme.JobSeeker"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.EngineeringActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.HukumActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.PariwisataActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.ArsitekturActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.DesignActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.MarketingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.AkuntansiActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".activities.CVActivity"
             android:exported="false">

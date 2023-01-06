@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tugasakhirpab2.rjn.Intent_Key;
+import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
+import com.tugasakhirpab2.rjn.databinding.ActivityArsitekturBinding;
 import com.tugasakhirpab2.rjn.databinding.ActivityKomputerBinding;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
 import com.tugasakhirpab2.rjn.retrofit.APIService;
@@ -21,9 +23,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KomputerActivity extends AppCompatActivity {
+public class ArsitekturActivity extends AppCompatActivity {
 
-    private ActivityKomputerBinding binding;
+    private ActivityArsitekturBinding binding;
 
     private KerjaAdapter kerjaAdapter;
     private List<KerjaModel.Result> results = new ArrayList<>();
@@ -32,7 +34,7 @@ public class KomputerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityKomputerBinding.inflate(getLayoutInflater());
+        binding = ActivityArsitekturBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         backPressed();
@@ -44,7 +46,7 @@ public class KomputerActivity extends AppCompatActivity {
         kerjaAdapter = new KerjaAdapter(results, new KerjaAdapter.OnAdapterListener() {
             @Override
             public void onClick(KerjaModel.Result result) {
-                Intent intent = new Intent(KomputerActivity.this, DetailKerjaActivity.class);
+                Intent intent = new Intent(ArsitekturActivity.this, DetailKerjaActivity.class);
                 intent.putExtra(Intent_Key.EXTRA_ID_KERJA, result.getIdKerja());
                 intent.putExtra(Intent_Key.EXTRA_NAMA_PERUSAHAAN, result.getNamaPerusahaan());
                 intent.putExtra(Intent_Key.EXTRA_JOB, result.getJobDesk());
@@ -60,7 +62,7 @@ public class KomputerActivity extends AppCompatActivity {
 
     private void getDataFromAPI()
     {
-        APIService.apiEndpoint().getKategoriKomputer()
+        APIService.apiEndpoint().getKategoriArsitektur()
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
