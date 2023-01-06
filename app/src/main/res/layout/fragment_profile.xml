@@ -130,48 +130,12 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/ll_cv"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginVertical="2dp"
-            android:background="@drawable/bg_item_profile"
-            android:drawableEnd="@drawable/ic_baseline_settings_24"
-            android:paddingEnd="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:fontFamily="@font/montserratsemibold"
-            android:textColor="#464646"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_right_24"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="170dp"/>
-
-    </LinearLayout>
-
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#F4F4F4"
-        android:layout_below="@id/ll_settings"
+        android:layout_below="@id/ll_cv"
         android:layout_marginTop="28dp"/>
 
     <LinearLayout

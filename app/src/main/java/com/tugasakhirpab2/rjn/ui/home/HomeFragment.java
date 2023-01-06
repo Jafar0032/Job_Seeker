@@ -204,7 +204,7 @@ public class HomeFragment extends Fragment {
 
     private void getDataFromAPI()
     {
-        APIService.apiEndpoint().getKerja()
+        APIService.apiEndpoint().getRekomendasiKerja()
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
