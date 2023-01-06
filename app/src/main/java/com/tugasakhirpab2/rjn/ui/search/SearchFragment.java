@@ -2,6 +2,7 @@ package com.tugasakhirpab2.rjn.ui.search;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,7 +29,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tugasakhirpab2.rjn.Intent_Key;
 import com.tugasakhirpab2.rjn.R;
+import com.tugasakhirpab2.rjn.activities.DetailKerjaActivity;
 import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
 import com.tugasakhirpab2.rjn.databinding.FragmentHomeBinding;
 import com.tugasakhirpab2.rjn.databinding.FragmentSearchBinding;
@@ -124,7 +127,13 @@ public class SearchFragment extends Fragment {
         kerjaAdapter = new KerjaAdapter(results, new KerjaAdapter.OnAdapterListener() {
             @Override
             public void onClick(KerjaModel.Result result) {
-
+                Intent intent = new Intent(getActivity(), DetailKerjaActivity.class);
+                intent.putExtra(Intent_Key.EXTRA_ID_KERJA, result.getIdKerja());
+                intent.putExtra(Intent_Key.EXTRA_NAMA_PERUSAHAAN, result.getNamaPerusahaan());
+                intent.putExtra(Intent_Key.EXTRA_JOB, result.getJobDesk());
+                intent.putExtra(Intent_Key.EXTRA_GAJI, result.getGaji());
+                intent.putExtra(Intent_Key.EXTRA_LOKASI_PERUSAHAAN, result.getAlamat());
+                startActivity(intent);
             }
         });
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false);
