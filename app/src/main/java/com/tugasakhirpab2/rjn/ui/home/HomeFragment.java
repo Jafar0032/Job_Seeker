@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,6 +63,7 @@ public class HomeFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mRoot, mRef;
+    private FirebaseUser firebaseUser;
 
     private String mFullname;
     private String userId;
@@ -79,23 +81,27 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-
+        firebaseUser = mAuth.getCurrentUser();
         userId = mAuth.getCurrentUser().getUid();
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                mFullname = user.getFullName();
-                binding.tvUsernameHalo.setText(mFullname + " !");
-            }
+        if(firebaseUser != null){
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user = snapshot.getValue(User.class);
+                    mFullname = user.getFullName();
+                    binding.tvUsernameHalo.setText(mFullname + " !");
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                mFullname = "Anonymous";
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    mFullname = "Anonymous";
+                }
+            });
+        }else {
+            Toast.makeText(getActivity(), "No User!!", Toast.LENGTH_SHORT).show();
+        }
 
         binding.btnKategoriKomputer.setOnClickListener(new View.OnClickListener() {
             @Override
