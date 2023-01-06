@@ -8,36 +8,63 @@
     android:paddingHorizontal="24dp"
     android:paddingVertical="16dp">
 
-    <EditText
-        android:id="@+id/et_tempat_upload"
+    <LinearLayout
+        android:id="@+id/ll_atas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Click Twice to select the file"
-        android:background="@drawable/search_view_bg"
-        android:padding="16dp"
-        android:fontFamily="@font/montserratmedium"
-        android:includeFontPadding="false"
-        android:letterSpacing="0.02"
-        android:focusable="false"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_upload_file"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_tempat_upload"
-        android:layout_marginTop="24dp"
-        android:text="Upload File"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserratsemibold"/>
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left_24"
+            android:layout_gravity="start"/>
 
-    <Button
-        android:id="@+id/btn_liat_file"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CV"
+            android:textColor="#F37362"
+            android:fontFamily="@font/montserratbold"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="135dp"/>
+
+    </LinearLayout>
+    
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_upload_file"
-        android:layout_marginTop="18dp"
-        android:text="Retrieve File"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserratsemibold"/>
+        android:src="@drawable/file_128px"/>
+
+<!--    <EditText-->
+<!--        android:id="@+id/et_tempat_upload"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Click Twice to select the file"-->
+<!--        android:background="@drawable/search_view_bg"-->
+<!--        android:padding="16dp"-->
+<!--        android:fontFamily="@font/montserratmedium"-->
+<!--        android:includeFontPadding="false"-->
+<!--        android:letterSpacing="0.02"-->
+<!--        android:focusable="false"-->
+<!--        android:layout_below="@id/ll_atas"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_browse_file"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/et_tempat_upload"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_upload_file"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/btn_browse_file"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="Upload File"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:fontFamily="@font/montserratsemibold"/>-->
 
 </RelativeLayout>

@@ -87,7 +87,8 @@
         </activity>
         <activity
             android:name=".activities.CVActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

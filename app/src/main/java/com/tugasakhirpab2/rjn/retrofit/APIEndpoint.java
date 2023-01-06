@@ -14,6 +14,10 @@ public interface APIEndpoint {
     @GET("kerja.php")
     Call<KerjaModel> getKerja();
 
+    // End Point Rekomendasi Kerja
+    @GET("rekomendasikerja.php")
+    Call<KerjaModel> getRekomendasiKerja();
+
     // End Point Detail Kerja
     @GET("detail.php")
     Call<DetailKerjaModel> getDetailKerja(@Query("idKerja") String idKerja);
