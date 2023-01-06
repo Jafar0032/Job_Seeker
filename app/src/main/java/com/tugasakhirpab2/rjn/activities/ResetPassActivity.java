@@ -72,5 +72,11 @@ public class ResetPassActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(ResetPassActivity.this, SignInActivity.class);
+        startActivity(intent);
     }
 }

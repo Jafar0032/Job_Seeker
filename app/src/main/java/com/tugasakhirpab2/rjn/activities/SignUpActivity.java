@@ -157,6 +157,11 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(SignUpActivity.this, SignUpActivity.class);
+        startActivity(intent);
+    }
 //    public Boolean validateGender(){
 //        String val = binding.etGender.getText().toString().trim();
 //        if (val.isEmpty()){
