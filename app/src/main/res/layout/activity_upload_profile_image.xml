@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBFB"
+    tools:context=".activities.UploadProfileImageActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_atas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_arrow_left_24"
+            app:layout_constraintEnd_toStartOf="@+id/tvPersonalData"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPersonalData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="9"
+            android:fontFamily="@font/montserratbold"
+            android:text="Edit Image Profile"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_atas"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/textView_upload_pic_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Upload your profile pic"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/primary" />
+
+            <Button
+                android:id="@+id/btnChoose"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView_upload_pic_head"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/primary"
+                android:text="Choose Picture" />
+
+            <ImageView
+                android:id="@+id/imageView_profile_dp"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@id/btnChoose"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:contentDescription="ImageView to Display Pic" />
+
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView_profile_dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Upload"
+                android:enabled="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,13 +13,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +41,7 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference mRoot, mRef;
+    private FirebaseUser firebaseUser;
 
     private String mFullname;
     private String userId;
@@ -55,29 +60,44 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
         userId = mAuth.getCurrentUser().getUid();
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                mFullname = user.getFullName();
-                binding.tvFullname.setText(mFullname);
-                binding.llPersonalData.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getActivity(), ProfilActivity.class);
-                        startActivity(intent);
-                    }
-                });
-            }
+        if (firebaseUser != null) {
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user = snapshot.getValue(User.class);
+                    mFullname = user.getFullName();
+                    binding.tvFullname.setText(mFullname);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                mFullname = "Anonymous";
-            }
-        });
+                    Uri uri = firebaseUser.getPhotoUrl();
+
+                    Glide.with(binding.ivProfil.getContext())
+                            .load(uri)
+                            .fitCenter()
+                            .placeholder(R.drawable.img_placeholder)
+                            .into(binding.ivProfil);
+
+                    binding.llPersonalData.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), ProfilActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    mFullname = "Anonymous";
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "No User!!", Toast.LENGTH_SHORT).show();
+        }
+
 
         binding.llLogout.setOnClickListener(new View.OnClickListener() {
             @Override

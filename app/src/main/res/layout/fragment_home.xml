@@ -31,11 +31,11 @@
         android:layout_marginStart="8sp"
         android:layout_toRightOf="@id/tv_halo"/>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_profil"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/profile"
+        tools:src="@drawable/profile"
         android:layout_alignParentEnd="true"/>
 
     <include

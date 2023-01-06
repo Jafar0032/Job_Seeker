@@ -33,8 +33,6 @@ public class SignUpActivity extends AppCompatActivity {
     private DatabaseReference mRoot, mRef;
     private SimpleDateFormat dateFormatter;
     private int mYear,mMonth,mDay;
-    private String Famale = "Famale";
-    private String Male = "Male";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

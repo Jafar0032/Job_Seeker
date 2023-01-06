@@ -61,7 +61,7 @@
         android:layout_below="@id/ll_pocok"
         android:layout_centerHorizontal="true">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profil"
             android:layout_width="80dp"
             android:layout_height="80dp"
