@@ -96,7 +96,7 @@ public class KerjaAdapter extends RecyclerView.Adapter<KerjaAdapter.ViewHolder> 
     {
         if(f.equals("Y"))
             return "# Full Time";
-        else if(f.equals("T"))
+        else if(f.equals("N"))
             return "# Part Time";
         return "null";
     }
