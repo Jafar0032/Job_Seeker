@@ -9,7 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +33,7 @@ import com.tugasakhirpab2.rjn.adapter.KerjaAdapter;
 import com.tugasakhirpab2.rjn.databinding.FragmentHomeBinding;
 import com.tugasakhirpab2.rjn.databinding.FragmentSearchBinding;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
+import com.tugasakhirpab2.rjn.model.SearchKerjaModel;
 import com.tugasakhirpab2.rjn.model.User;
 import com.tugasakhirpab2.rjn.retrofit.APIService;
 
@@ -46,6 +50,7 @@ public class SearchFragment extends Fragment {
 
     private KerjaAdapter kerjaAdapter;
     private List<KerjaModel.Result> results = new ArrayList<>();
+    private String searchContent;
 //    private SearchView searchView;
 //    private MenuItem menuItem;
 
@@ -98,9 +103,19 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Toast.makeText(getActivity(), "Hai" + searchContent, Toast.LENGTH_SHORT).show();
         getDataFromAPI();
         setupRecyclerViewKerja();
+
+        ImageView icon = (ImageView) binding.svSearch.findViewById(com.airbnb.lottie.R.id.search_mag_icon);
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchContent = binding.svSearch.getQuery().toString();
+                getDataFromAPI();
+                hideKeyboard(getActivity());
+            }
+        });
     }
 
 
@@ -111,14 +126,14 @@ public class SearchFragment extends Fragment {
 
             }
         });
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1, RecyclerView.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false);
         binding.rvSearch.setLayoutManager(layoutManager);
         binding.rvSearch.setAdapter(kerjaAdapter);
     }
 
     private void getDataFromAPI()
     {
-        APIService.apiEndpoint().getKerja()
+        APIService.apiEndpoint().getSearchKerja(searchContent)
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
@@ -134,6 +149,11 @@ public class SearchFragment extends Fragment {
 
                     }
                 });
+    }
+
+    private void hideKeyboard(Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
 
     @Override

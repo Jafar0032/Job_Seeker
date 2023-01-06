@@ -2,6 +2,7 @@ package com.tugasakhirpab2.rjn.retrofit;
 
 import com.tugasakhirpab2.rjn.model.DetailKerjaModel;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
+import com.tugasakhirpab2.rjn.model.SearchKerjaModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,5 +21,8 @@ public interface APIEndpoint {
     // End Point Kategori Komputer
     @GET("kategorikomputer.php")
     Call<KerjaModel> getKategoriKomputer();
+
+    @GET("kerjasearch.php")
+    Call<KerjaModel> getSearchKerja(@Query("jobDesk") String jobDesk);
 
 }
