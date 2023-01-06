@@ -30,7 +30,6 @@ public class UbahProfilActivity extends AppCompatActivity {
     ActivityUbahProfilBinding binding;
     private DatabaseReference mRoot, mRef;
     private FirebaseAuth mAuth;
-    private String eFullname, eGender, eBirthDate, eAddress;
 
     private String userId;
     private int mYear, mMonth, mDay;
@@ -97,11 +96,6 @@ public class UbahProfilActivity extends AppCompatActivity {
                 String address = String.valueOf(mRef.child("address").setValue(binding.etAdddress.getText().toString()));
 
                 Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
-
-                intent.putExtra("fullName", fullName);
-                intent.putExtra("gender", gender);
-                intent.putExtra("birthDate", birthDate);
-                intent.putExtra("address", address);
 
                 startActivity(intent);
                 finish();

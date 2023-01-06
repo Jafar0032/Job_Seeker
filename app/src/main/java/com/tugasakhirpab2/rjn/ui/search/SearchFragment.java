@@ -119,6 +119,7 @@ public class SearchFragment extends Fragment {
     }
 
 
+
     private void setupRecyclerViewKerja() {
         kerjaAdapter = new KerjaAdapter(results, new KerjaAdapter.OnAdapterListener() {
             @Override
