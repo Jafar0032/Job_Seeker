@@ -88,8 +88,8 @@
                 android:layout_below="@id/imageView_profile_dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="Upload"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:text="Upload" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -99,6 +99,7 @@
                 android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
                 android:elevation="10dp"
+                android:indeterminateTint="@color/primary"
                 android:visibility="gone" />
 
         </RelativeLayout>
