@@ -1,5 +1,6 @@
 package com.tugasakhirpab2.rjn.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.bumptech.glide.Glide;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
+
+import org.w3c.dom.Text;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -52,12 +56,22 @@ public class KerjaAdapter extends RecyclerView.Adapter<KerjaAdapter.ViewHolder> 
         holder.tvNamaPerusahaan.setText(result.getNamaPerusahaan());
         holder.tvGaji.setText(formatRupiah.format(Double.parseDouble(result.getGaji())));
         holder.tvLokasiPerusahaan.setText(result.getAlamat());
-        Glide.with(holder.itemView.getContext())
-                .load(result.getLogoPerusahaan())
-                .placeholder(R.drawable.img_placeholder)
-                .fitCenter()
-                .into(holder.ivLogoPerusahaan);
-
+        if(result.getLogoPerusahaan().equals(""))
+        {
+            TextDrawable tileImage = TextDrawable.builder()
+                    .beginConfig()
+                    .endConfig()
+                    .buildRect(getInitialName(result.getNamaPerusahaan()), Color.BLACK);
+            holder.ivLogoPerusahaan.setImageDrawable(tileImage);
+        }
+        else
+        {
+            Glide.with(holder.itemView.getContext())
+                    .load(result.getLogoPerusahaan())
+                    .placeholder(R.drawable.img_placeholder)
+                    .fitCenter()
+                    .into(holder.ivLogoPerusahaan);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +113,17 @@ public class KerjaAdapter extends RecyclerView.Adapter<KerjaAdapter.ViewHolder> 
         else if(f.equals("N"))
             return "# Part Time";
         return "null";
+    }
+
+    private String getInitialName(String fullname)
+    {
+        String splitName[] = fullname.split("\\s+");
+        int splitCount = splitName.length;
+        if(splitCount == 1)
+        {
+            return "" + fullname.charAt(0);
+        }
+        return "" + fullname.charAt(0) + fullname.charAt(fullname.indexOf(" ") + 1);
     }
 
 }
