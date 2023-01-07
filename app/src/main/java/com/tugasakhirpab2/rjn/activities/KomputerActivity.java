@@ -51,6 +51,7 @@ public class KomputerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 searchContent = binding.svSearch.getQuery().toString();
                 getDataFromAPI();
+                hideKeyboard(KomputerActivity.this);
             }
         });
     }
@@ -91,6 +92,11 @@ public class KomputerActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void hideKeyboard(Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
 
 

@@ -40,9 +40,6 @@ public class MarketingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SearchViewModel searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
-
         binding = ActivityMarketingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

@@ -40,9 +40,6 @@ public class HukumActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SearchViewModel searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
-
         binding = ActivityHukumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
