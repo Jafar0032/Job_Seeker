@@ -102,6 +102,16 @@ public class CVActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        binding.ivHapusFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference.child(userId).removeValue();
+                // KASIH PROGRESS BAR
+                binding.llAdaCv.setVisibility(View.INVISIBLE);
+                binding.llNothingCv.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private void selectPDF() {

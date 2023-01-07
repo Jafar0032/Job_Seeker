@@ -41,12 +41,14 @@
         android:layout_below="@id/ll_atas"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
+        android:weightSum="7"
         android:visibility="invisible">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_insert_drive_file_24"/>
+            android:src="@drawable/ic_baseline_insert_drive_file_24"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/tv_nama_file"
@@ -57,7 +59,17 @@
             android:layout_gravity="center_vertical"
             android:textColor="@color/black"
             android:fontFamily="@font/montserratbold"
-            android:letterSpacing="0.05"/>
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:letterSpacing="0.05"
+            android:layout_weight="5"/>
+
+        <ImageView
+            android:id="@+id/iv_hapus_file"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_delete_24"/>
 
     </LinearLayout>
 
@@ -66,7 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/ll_atas">
+        android:layout_below="@id/ll_atas"
+        android:visibility="invisible">
 
         <ImageView
             android:id="@+id/iv_gambar_uplaod"
