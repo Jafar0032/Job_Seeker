@@ -1,12 +1,16 @@
 package com.tugasakhirpab2.rjn.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import com.tugasakhirpab2.rjn.Intent_Key;
 import com.tugasakhirpab2.rjn.R;
@@ -15,6 +19,7 @@ import com.tugasakhirpab2.rjn.databinding.ActivityAkuntansiBinding;
 import com.tugasakhirpab2.rjn.databinding.ActivityKomputerBinding;
 import com.tugasakhirpab2.rjn.model.KerjaModel;
 import com.tugasakhirpab2.rjn.retrofit.APIService;
+import com.tugasakhirpab2.rjn.ui.search.SearchViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +34,14 @@ public class AkuntansiActivity extends AppCompatActivity {
 
     private KerjaAdapter kerjaAdapter;
     private List<KerjaModel.Result> results = new ArrayList<>();
+    private String searchContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SearchViewModel searchViewModel =
+                new ViewModelProvider(this).get(SearchViewModel.class);
 
         binding = ActivityAkuntansiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -40,6 +49,16 @@ public class AkuntansiActivity extends AppCompatActivity {
         backPressed();
         setupRecyclerViewKerja();
         getDataFromAPI();
+
+        ImageView icon = (ImageView) binding.svSearch.findViewById(com.airbnb.lottie.R.id.search_mag_icon);
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchContent = binding.svSearch.getQuery().toString();
+                getDataFromAPI();
+                hideKeyboard(AkuntansiActivity.this);
+            }
+        });
     }
 
     private void setupRecyclerViewKerja() {
@@ -62,7 +81,7 @@ public class AkuntansiActivity extends AppCompatActivity {
 
     private void getDataFromAPI()
     {
-        APIService.apiEndpoint().getKategoriAkuntansi()
+        APIService.apiEndpoint().getKategoriAkuntansi(searchContent)
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
@@ -78,6 +97,11 @@ public class AkuntansiActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void hideKeyboard(Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
 
     private void backPressed()

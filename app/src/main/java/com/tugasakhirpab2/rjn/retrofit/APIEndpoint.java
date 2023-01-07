@@ -28,35 +28,35 @@ public interface APIEndpoint {
 
     // End Point Kategori Komputer
     @GET("kategorikomputer.php")
-    Call<KerjaModel> getKategoriKomputer();
+    Call<KerjaModel> getKategoriKomputer(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Akuntansi
     @GET("kategoriakuntansi.php")
-    Call<KerjaModel> getKategoriAkuntansi();
+    Call<KerjaModel> getKategoriAkuntansi(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Marketing
     @GET("kategorimarketing.php")
-    Call<KerjaModel> getKategoriMarketing();
+    Call<KerjaModel> getKategoriMarketing(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Design
     @GET("kategoridc.php")
-    Call<KerjaModel> getKategoriDesignCreative();
+    Call<KerjaModel> getKategoriDesignCreative(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Hotel
     @GET("kategorihp.php")
-    Call<KerjaModel> getKategoriHotelPariwisata();
+    Call<KerjaModel> getKategoriHotelPariwisata(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Arsitektur
     @GET("kategoriarsitektur.php")
-    Call<KerjaModel> getKategoriArsitektur();
+    Call<KerjaModel> getKategoriArsitektur(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Hukum
     @GET("kategorihukum.php")
-    Call<KerjaModel> getKategoriHukum();
+    Call<KerjaModel> getKategoriHukum(@Query("jobDesk") String jobDesk);
 
     // End Point Kategori Engineering
     @GET("kategoriengineering.php")
-    Call<KerjaModel> getKategoriEngineering();
+    Call<KerjaModel> getKategoriEngineering(@Query("jobDesk") String jobDesk);
 
 
 
