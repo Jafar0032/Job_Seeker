@@ -104,8 +104,8 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/marketing"
+            android:paddingEnd="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -132,13 +132,14 @@
             android:id="@+id/btn_kategori_akuntansi"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_centerInParent="true"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/reshot_icon_accountant_q64hp8deba"
+            android:paddingEnd="7dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -172,7 +173,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
+            android:drawableEnd="@drawable/reshot_icon_design_x8tbe35746"
             android:paddingEnd="6dp" />
 
         <TextView
@@ -184,7 +185,7 @@
             android:layout_marginTop="2dp"
             android:fontFamily="@font/montserratmedium"
             android:gravity="center"
-            android:text="Design"
+            android:text="Desain"
             android:textColor="#464646"
             android:textSize="8sp" />
 
@@ -208,8 +209,8 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/arsitek"
+            android:paddingEnd="7dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -243,8 +244,8 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/reshot_icon_hotel_lrefb9aujc"
+            android:paddingEnd="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -279,8 +280,8 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/hukum"
+            android:paddingEnd="7dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -315,8 +316,8 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/box_background"
-            android:drawableEnd="@drawable/chipss"
-            android:paddingEnd="6dp" />
+            android:drawableEnd="@drawable/reshot_icon_laser_engineering_net_shape_cquh8wntps"
+            android:paddingEnd="7dp" />
 
         <TextView
             android:layout_width="wrap_content"
