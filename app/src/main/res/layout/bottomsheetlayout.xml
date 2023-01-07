@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_dialog">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_logout_24"
-        app:tint="@color/primary" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lotie"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/crying"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
         android:id="@+id/chooseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Yakin mau keluar ?"
-        android:textColor="@color/primary"
+        android:text="@string/kamu_mau_keluar"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
-        android:textSize="22sp"
-        android:fontFamily="@font/montserratsemibold"/>
+        android:textSize="16sp"
+        android:fontFamily="@font/montserratsemibold"
+        android:layout_below="@id/lotie"/>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginHorizontal="28dp"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/chooseText">
         
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Ya logout"
+            android:text="Yaa, maaf ya"
             android:textAllCaps="false"
             android:layout_weight="1"
             android:layout_marginEnd="12dp"/>
@@ -45,10 +50,10 @@
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Batal"
+            android:text="@string/nggak_kok"
             android:textAllCaps="false"
             android:layout_weight="1"/>
         
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

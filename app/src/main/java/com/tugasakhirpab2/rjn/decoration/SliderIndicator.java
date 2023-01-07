@@ -27,8 +27,7 @@ public class SliderIndicator implements ViewPager.OnPageChangeListener {
 
     public SliderIndicator(@NonNull Context context,
                            @NonNull LinearLayout containerView,
-                           @NonNull ViewPager viewPager,
-                           @DrawableRes int drawableRes) {
+                           @NonNull ViewPager viewPager) {
         if (context == null) {
             throw new IllegalArgumentException("context cannot be null");
         } else if (containerView == null) {
@@ -40,7 +39,6 @@ public class SliderIndicator implements ViewPager.OnPageChangeListener {
         }
         mContext = context;
         mContainer = containerView;
-        mDrawable = drawableRes;
         mViewPager = viewPager;
 
     }

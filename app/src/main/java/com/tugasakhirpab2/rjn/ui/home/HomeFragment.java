@@ -185,7 +185,7 @@ public class HomeFragment extends Fragment {
 
         mAdapter = new SliderPagerAdapter(getParentFragmentManager(), fragments);
         binding.llBanner.sliderView.setAdapter(mAdapter);
-        mIndicator = new SliderIndicator(getActivity(), binding.llBanner.pagesContainer, binding.llBanner.sliderView, R.drawable.indicator_circle);
+        mIndicator = new SliderIndicator(getActivity(), binding.llBanner.pagesContainer, binding.llBanner.sliderView);
         mIndicator.setPageCount(fragments.size());
         mIndicator.show();
     }

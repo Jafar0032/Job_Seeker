@@ -106,7 +106,6 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "Hai" + searchContent, Toast.LENGTH_SHORT).show();
         getDataFromAPI();
         setupRecyclerViewKerja();
 
