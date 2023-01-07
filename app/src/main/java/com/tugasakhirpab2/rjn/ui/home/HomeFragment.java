@@ -106,71 +106,85 @@ public class HomeFragment extends Fragment {
         binding.btnKategoriKomputer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), KomputerActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriAkuntansi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), AkuntansiActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriMarketing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), MarketingActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriDesign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), DesignActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriArsitektur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), ArsitekturActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriPariwisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), PariwisataActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriHukum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), HukumActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
 
         binding.btnKategoriEngineering.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 Intent intent = new Intent(getActivity(), EngineeringActivity.class);
                 startActivity(intent);
+                hideProgressBar();
             }
         });
-
         setupSlider();
         getDataFromAPI();
         setupRecyclerViewKerja();
-
     }
 
     private void setupSlider() {
@@ -233,4 +247,9 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+    }
+    private void showProgressBar(){ binding.loLoad.setVisibility(View.VISIBLE);}
 }

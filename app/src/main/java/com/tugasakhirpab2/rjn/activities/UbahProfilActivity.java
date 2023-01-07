@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,7 @@ public class UbahProfilActivity extends AppCompatActivity {
     ActivityUbahProfilBinding binding;
     private DatabaseReference mRoot, mRef;
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
 
     private String userId;
     private int mYear, mMonth, mDay;
@@ -81,6 +83,59 @@ public class UbahProfilActivity extends AppCompatActivity {
 
     private void editDataUser() {
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+        if(firebaseUser != null){
+            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    mRef.child("fullName").setValue(binding.etFullName.getText().toString());
+                    mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString());
+                    mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString());
+                    mRef.child("address").setValue(binding.etAdddress.getText().toString());
+
+                    Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
+
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }else {
+            Toast.makeText(this, "No User!!", Toast.LENGTH_SHORT).show();
+        }
+//        mRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                mRef.child("fullName").setValue(binding.etFullName.getText().toString());
+//                mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString());
+//                mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString());
+//                mRef.child("address").setValue(binding.etAdddress.getText().toString());
+//
+//                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
+//
+//                startActivity(intent);
+//                finish();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+    }
+
+    private void showUserData() {
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
         userId = mAuth.getCurrentUser().getUid();
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
@@ -98,34 +153,6 @@ public class UbahProfilActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void showUserData() {
-        mAuth = FirebaseAuth.getInstance();
-        userId = mAuth.getCurrentUser().getUid();
-        mRoot = FirebaseDatabase.getInstance().getReference();
-        mRef = mRoot.child("users").child(userId);
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String nama, jenisKelamin, birthDate, address;
-                User user = snapshot.getValue(User.class);
-                nama = user.getFullName();
-                jenisKelamin = user.getGender();
-                birthDate = user.getBirthDate();
-                address = user.getAddress();
-
-                binding.etFullName.setText(nama);
-                binding.etGender.setText(jenisKelamin);
-                binding.etBirthDate.setText(birthDate);
-                binding.etAdddress.setText(address);
             }
 
             @Override

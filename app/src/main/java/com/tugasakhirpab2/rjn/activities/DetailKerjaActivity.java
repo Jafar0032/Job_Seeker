@@ -51,11 +51,12 @@ public class DetailKerjaActivity extends AppCompatActivity {
 
         binding = ActivityDetailKerjaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         binding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 onBackPressed();
+                hideProgressBar();
             }
         });
         getDataFromApi();
@@ -70,6 +71,7 @@ public class DetailKerjaActivity extends AppCompatActivity {
 
     private void getDataFromApi()
     {
+        showProgressBar();
         String idKerja = getIntent().getStringExtra(Intent_Key.EXTRA_ID_KERJA);
         String namaPerusahaan = getIntent().getStringExtra(Intent_Key.EXTRA_NAMA_PERUSAHAAN);
         String job = getIntent().getStringExtra(Intent_Key.EXTRA_JOB);
@@ -99,7 +101,12 @@ public class DetailKerjaActivity extends AppCompatActivity {
                         Log.d(TAG, t.toString());
                     }
                 });
+        hideProgressBar();
     }
-
-
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+    }
 }

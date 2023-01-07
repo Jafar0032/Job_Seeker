@@ -36,36 +36,42 @@ public class SignInActivity extends AppCompatActivity {
         binding.btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showProgressBar();
                 String email = binding.etEmail.getText().toString();
                 String password = binding.etPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
+                    hideProgressBar();
                     binding.etEmail.setError("Enter your email address!");
                     return;
                 } else if (TextUtils.isEmpty(password)) {
+                    hideProgressBar();
                     binding.etPassword.setError("Enter your password!");
                     return;
                 } else {
                     checkUser();
                 }
-
+                hideProgressBar();
             }
         });
 
         binding.btnForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 startActivity(new Intent(SignInActivity.this, ResetPassActivity.class));
                 finish();
+                hideProgressBar();
             }
         });
 
         binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
                 finish();
+                hideProgressBar();
             }
         });
     }
@@ -98,4 +104,12 @@ public class SignInActivity extends AppCompatActivity {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+    }
+
 }
