@@ -84,6 +84,15 @@ public class CVActivity extends AppCompatActivity {
                     binding.llNothingCv.setVisibility(View.INVISIBLE);
                     String namaFile = snapshot.child(userId).child("fileName").getValue().toString();
                     binding.tvNamaFile.setText(namaFile);
+                    binding.tvNamaFile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setType("application/pdf");
+                            intent.setData(Uri.parse(snapshot.child(userId).child("fileUrl").getValue().toString()));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 else
                 {
@@ -216,10 +225,5 @@ public class CVActivity extends AppCompatActivity {
                         pd.setMessage("Uploaded : " + (int) percent + "%");
                     }
                 });
-    }
-
-    public void retrievePDFs()
-    {
-
     }
 }
