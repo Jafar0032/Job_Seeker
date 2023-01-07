@@ -2,15 +2,20 @@ package com.tugasakhirpab2.rjn.model;
 
 public class FileInModel {
 
-    private String fileName, fileUrl;
+    private String userId, fileName, fileUrl;
 
     public FileInModel() {
     }
 
-    public FileInModel(String fileName, String fileUrl) {
+    public FileInModel(String userId, String fileName, String fileUrl) {
+        this.userId = userId;
         this.fileName = fileName;
         this.fileUrl = fileUrl;
     }
+
+    public String getUserId() {return userId;}
+
+    public void setUserId(String userId) {this.fileName = fileName;}
 
     public String getFileName() {
         return fileName;

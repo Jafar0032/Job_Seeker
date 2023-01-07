@@ -32,11 +32,72 @@
             android:layout_marginStart="135dp"/>
 
     </LinearLayout>
-    
-    <ImageView
+
+    <LinearLayout
+        android:id="@+id/ll_ada_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/file_128px"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/ll_atas"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_insert_drive_file_24"/>
+
+        <TextView
+            android:id="@+id/tv_nama_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Rafael-2024250043.pdf"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserratbold"
+            android:letterSpacing="0.05"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_nothing_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/ll_atas">
+
+        <ImageView
+            android:id="@+id/iv_gambar_uplaod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/file"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="12dp"/>
+
+        <TextView
+            android:id="@+id/tv_tulisan_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kamu belum upload CV\n Yuk upload disini"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:textColor="#A3A3A3"
+            android:fontFamily="@font/montserratsemibold"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="1dp"/>
+
+        <Button
+            android:id="@+id/btn_browse_file"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Browse"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
 
 <!--    <EditText-->
 <!--        android:id="@+id/et_tempat_upload"-->
@@ -50,12 +111,6 @@
 <!--        android:letterSpacing="0.02"-->
 <!--        android:focusable="false"-->
 <!--        android:layout_below="@id/ll_atas"/>-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_browse_file"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/et_tempat_upload"/>-->
 
 <!--    <Button-->
 <!--        android:id="@+id/btn_upload_file"-->

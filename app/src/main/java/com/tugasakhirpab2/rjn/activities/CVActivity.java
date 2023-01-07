@@ -9,7 +9,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
+import android.provider.ContactsContract;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,8 +20,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -27,13 +34,19 @@ import com.tugasakhirpab2.rjn.databinding.ActivityCvactivityBinding;
 import com.tugasakhirpab2.rjn.model.FileInModel;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CVActivity extends AppCompatActivity {
 
+    private static final String TAG = CVActivity.class.getSimpleName();
+
     private ActivityCvactivityBinding binding;
 
+    private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +55,51 @@ public class CVActivity extends AppCompatActivity {
         binding = ActivityCvactivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference("pdfs");
 
-        binding.btnUploadFile.setEnabled(false);
+        List<String> list = new ArrayList<>();
 
-        binding.etTempatUpload.setOnClickListener(new View.OnClickListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                selectPDF();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    String data = dataSnapshot.child("userId").getValue().toString();
+                    Log.d(TAG, data);
+                    list.add(data);
+                }
+
+                if(list.contains(userId))
+                {
+                    binding.llAdaCv.setVisibility(View.VISIBLE);
+                    binding.llNothingCv.setVisibility(View.INVISIBLE);
+                    String namaFile = snapshot.child(userId).child("fileName").getValue().toString();
+                    binding.tvNamaFile.setText(namaFile);
+                }
+                else
+                {
+                    binding.llAdaCv.setVisibility(View.INVISIBLE);
+                    binding.llNothingCv.setVisibility(View.VISIBLE);
+                    binding.btnBrowseFile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            selectPDF();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
-        binding.btnLiatFile.setOnClickListener(new View.OnClickListener() {
+        binding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retrievePDFs();
+                onBackPressed();
             }
         });
     }
@@ -80,7 +122,6 @@ public class CVActivity extends AppCompatActivity {
             // Extract name of the pdf file
             String uriString = uri.toString();
             File myFile = new File(uriString);
-            String path = myFile.getAbsolutePath();
             String displayName = null;
 
             if(uriString.startsWith("content://"))
@@ -100,20 +141,11 @@ public class CVActivity extends AppCompatActivity {
             {
                 displayName = myFile.getName();
             }
-
-            binding.btnUploadFile.setEnabled(true);
-            binding.etTempatUpload.setText(displayName);
-
-            binding.btnUploadFile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    uploadPDF(data.getData());
-                }
-            });
+            uploadPDF(data.getData(), displayName);
         }
     }
 
-    private void uploadPDF(Uri data) {
+    private void uploadPDF(Uri data, String fileName) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("File Uploading...");
@@ -129,8 +161,7 @@ public class CVActivity extends AppCompatActivity {
                         while(!uriTask.isComplete());
                         Uri uri = uriTask.getResult();
 
-                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        FileInModel fileInModel = new FileInModel(binding.etTempatUpload.getText().toString(), uri.toString()); // Get the views from the model class
+                        FileInModel fileInModel = new FileInModel(userId, fileName, uri.toString()); // Get the views from the model class
                         databaseReference.child(userId).setValue(fileInModel); // Push the value into realtime database
                         Toast.makeText(CVActivity.this, "File Uploaded Successfully!", Toast.LENGTH_SHORT).show();
                         pd.dismiss();
@@ -142,10 +173,7 @@ public class CVActivity extends AppCompatActivity {
                         pd.setMessage("Uploaded : " + (int) percent + "%");
                     }
                 });
-
     }
-
-    // Try to upload pdf file
 
     public void retrievePDFs()
     {
