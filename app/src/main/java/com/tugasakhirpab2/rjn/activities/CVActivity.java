@@ -4,16 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
 import android.provider.ContactsContract;
 import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.databinding.ActivityCvactivityBinding;
 import com.tugasakhirpab2.rjn.model.FileInModel;
 
@@ -106,12 +114,37 @@ public class CVActivity extends AppCompatActivity {
         binding.ivHapusFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child(userId).removeValue();
-                // KASIH PROGRESS BAR
-                binding.llAdaCv.setVisibility(View.INVISIBLE);
-                binding.llNothingCv.setVisibility(View.VISIBLE);
+                showDialog();
             }
         });
+    }
+
+    private void showDialog() {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bsl_hapus_cv);
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        Button btnHapus = dialog.findViewById(R.id.btn_hapus);
+        btnHapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference.child(userId).removeValue();
+                Intent intent = new Intent(CVActivity.this, CVActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     private void selectPDF() {
