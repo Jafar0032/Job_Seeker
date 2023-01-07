@@ -17,15 +17,15 @@ public class FragmentSlider extends Fragment {
 
     private static final String ARG_PARAM1 = "imgSlider";
 
-    private String imageUrls;
+    private int imageResources;
 
     public FragmentSlider() {
     }
 
-    public static FragmentSlider newInstance(String params) {
+    public static FragmentSlider newInstance(int params) {
         FragmentSlider fragment = new FragmentSlider();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, params);
+        args.putInt(ARG_PARAM1, params);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,11 +33,11 @@ public class FragmentSlider extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        imageUrls = getArguments().getString(ARG_PARAM1);
+        imageResources = getArguments().getInt(ARG_PARAM1);
         View view = inflater.inflate(R.layout.fragment_banner_slider, container, false);
         ImageView img = view.findViewById(R.id.img);
         Glide.with(getActivity())
-                .load(imageUrls)
+                .load(imageResources)
                 .placeholder(R.drawable.img_placeholder)
                 .into(img);
         return view;

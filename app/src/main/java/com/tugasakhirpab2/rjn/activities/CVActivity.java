@@ -45,6 +45,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class CVActivity extends AppCompatActivity {
 
     private static final String TAG = CVActivity.class.getSimpleName();
@@ -215,7 +217,7 @@ public class CVActivity extends AppCompatActivity {
 
                         FileInModel fileInModel = new FileInModel(userId, fileName, uri.toString()); // Get the views from the model class
                         databaseReference.child(userId).setValue(fileInModel); // Push the value into realtime database
-                        Toast.makeText(CVActivity.this, "File Uploaded Successfully!", Toast.LENGTH_SHORT).show();
+                        StyleableToast.makeText(CVActivity.this, "Upload berhasil", Toast.LENGTH_LONG, R.style.mytoast).show();
                         pd.dismiss();
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

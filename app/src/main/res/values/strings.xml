@@ -8,7 +8,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kamu_mau_keluar">Kamu mau ninggalin aku &#129402; ?</string>
-    <string name="nggak_kok">Nggak kok &#128513;!</string>
+    <string name="nggak_kok">Nggak kok!</string>
 
     <string-array name="gender">
         <item>Male</item>

@@ -178,10 +178,10 @@ public class HomeFragment extends Fragment {
         List<Fragment> fragments = new ArrayList<>();
 
         //link image
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_17b56894-2608-4509-a4f4-ad86aa5d3b62.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_7da28e4c-a14f-4c10-8fec-845578f7d748.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/18/85531617/85531617_87a351f9-b040-4d90-99f4-3f3e846cd7ef.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/20/85531617/85531617_03e76141-3faf-45b3-8bcd-fc0962836db3.jpg"));
+        fragments.add(FragmentSlider.newInstance(R.drawable.slide1));
+        fragments.add(FragmentSlider.newInstance(R.drawable.slide2));
+        fragments.add(FragmentSlider.newInstance(R.drawable.slide3));
+        fragments.add(FragmentSlider.newInstance(R.drawable.slide4));
 
         mAdapter = new SliderPagerAdapter(getParentFragmentManager(), fragments);
         binding.llBanner.sliderView.setAdapter(mAdapter);

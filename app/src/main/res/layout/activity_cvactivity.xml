@@ -22,14 +22,14 @@
             android:layout_gravity="start"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CV"
             android:textColor="#F37362"
             android:fontFamily="@font/montserratbold"
             android:textSize="20sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="135dp"/>
+            android:gravity="center_horizontal"
+            android:paddingEnd="20dp"/>
 
     </LinearLayout>
 

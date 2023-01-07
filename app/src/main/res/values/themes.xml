@@ -60,4 +60,18 @@
         <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
+
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#fff</item>
+        <item name="stFont">@font/montserratsemibold</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">@color/primary</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_baseline_star_24</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">center</item>
+        <item name="stRadius">50dp</item>
+    </style>
+
 </resources>
