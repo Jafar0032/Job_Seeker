@@ -40,9 +40,6 @@ public class PariwisataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SearchViewModel searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
-
         binding = ActivityPariwisataBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

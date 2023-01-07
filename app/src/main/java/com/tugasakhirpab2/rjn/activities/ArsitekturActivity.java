@@ -40,9 +40,6 @@ public class ArsitekturActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SearchViewModel searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
-
         binding = ActivityArsitekturBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
