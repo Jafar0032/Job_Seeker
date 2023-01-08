@@ -58,291 +58,296 @@
             android:textSize="18sp" />
 
         <RelativeLayout
-            android:id="@+id/rl_komputer"
+            android:id="@+id/rl_kategori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_kategori"
-            android:layout_marginTop="14dp">
+            android:layout_centerInParent="true">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_komputer"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/chipss"
-                android:paddingEnd="6dp" />
-
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_komputer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_komputer"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Komputer"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_marginTop="14dp">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_komputer"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/chipss"
+                    android:paddingEnd="6dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_marketing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_kategori"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_komputer">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_komputer"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Komputer"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_marketing"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/marketing"
-                android:paddingEnd="10dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_marketing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_marketing"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Marketing"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_komputer">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_marketing"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/marketing"
+                    android:paddingEnd="10dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_akuntansi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_below="@id/rl_komputer">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_marketing"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Marketing"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_akuntansi"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/reshot_icon_accountant_q64hp8deba"
-                android:paddingEnd="7dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_akuntansi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_akuntansi"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Akuntansi"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_marginTop="14dp"
+                android:layout_below="@id/rl_komputer">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_akuntansi"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/reshot_icon_accountant_q64hp8deba"
+                    android:paddingEnd="7dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_design"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl_komputer"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_akuntansi">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_akuntansi"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Akuntansi"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_design"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/reshot_icon_design_x8tbe35746"
-                android:paddingEnd="6dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_design"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_design"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Desain"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_below="@id/rl_marketing"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_akuntansi">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_design"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/reshot_icon_design_x8tbe35746"
+                    android:paddingEnd="6dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_arsitektur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_kategori"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_marketing">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_design"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Desain"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_arsitektur"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/arsitek"
-                android:paddingEnd="7dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_arsitektur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_arsitektur"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Arsitektur"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_marketing">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_arsitektur"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/arsitek"
+                    android:paddingEnd="7dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_pariwisata"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl_arsitektur"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_design">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_arsitektur"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Arsitektur"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_pariwisata"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/reshot_icon_hotel_lrefb9aujc"
-                android:paddingEnd="5dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_pariwisata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_pariwisata"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Pariwisata"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_below="@id/rl_arsitektur"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_design">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_pariwisata"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/reshot_icon_hotel_lrefb9aujc"
+                    android:paddingEnd="5dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_hukum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_kategori"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_arsitektur">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_pariwisata"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Pariwisata"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_hukum"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/hukum"
-                android:paddingEnd="7dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_hukum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_hukum"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Hukum"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_arsitektur">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_hukum"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/hukum"
+                    android:paddingEnd="7dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_engineering"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl_hukum"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="14dp"
-            android:layout_toEndOf="@id/rl_pariwisata">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_hukum"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Hukum"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_kategori_engineering"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/box_background"
-                android:drawableEnd="@drawable/reshot_icon_laser_engineering_net_shape_cquh8wntps"
-                android:paddingEnd="7dp" />
+            </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rl_engineering"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_kategori_engineering"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserratmedium"
-                android:gravity="center"
-                android:text="Engineering"
-                android:textColor="#464646"
-                android:textSize="8sp" />
+                android:layout_below="@id/rl_hukum"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@id/rl_pariwisata">
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_kategori_engineering"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/box_background"
+                    android:drawableEnd="@drawable/reshot_icon_laser_engineering_net_shape_cquh8wntps"
+                    android:paddingEnd="7dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_kategori_engineering"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/montserratmedium"
+                    android:gravity="center"
+                    android:text="Engineering"
+                    android:textColor="#464646"
+                    android:textSize="8sp" />
+
+            </RelativeLayout>
         </RelativeLayout>
+
 
 
         <TextView
             android:id="@+id/tv_rekomendasi_pekerjaan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_akuntansi"
+            android:layout_below="@+id/rl_kategori"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserratbold"
             android:text="Rekomendasi Pekerjaan"
