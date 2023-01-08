@@ -58,8 +58,8 @@
                 android:id="@+id/tv_nama_file"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Rafael-2024250043.pdf"
+                android:layout_marginHorizontal="20dp"
+                tools:text="Rafael-2024250043.pdfssssssssssssssssssssssss"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
                 android:fontFamily="@font/montserratbold"
@@ -127,7 +127,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#3E353535"/>
+            android:background="#54202020"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="300dp"

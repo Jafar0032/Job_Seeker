@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tugasakhirpab2.rjn.CustomProgressDialog;
 import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.databinding.ActivityCvactivityBinding;
 import com.tugasakhirpab2.rjn.model.FileInModel;
@@ -204,9 +206,11 @@ public class CVActivity extends AppCompatActivity {
 
     private void uploadPDF(Uri data, String fileName) {
 
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setTitle("File Uploading...");
-        pd.show();
+//        final ProgressDialog pd = new ProgressDialog(this);
+//        pd.setTitle("File Uploading...");
+//        pd.show();
+        CustomProgressDialog customProgressDialog = new CustomProgressDialog(CVActivity.this);
+        customProgressDialog.show();
 
         final StorageReference reference = storageReference.child("uploads/"+ System.currentTimeMillis() + ".pdf");
         // store in upload folder of the Firebase Storage
@@ -221,13 +225,12 @@ public class CVActivity extends AppCompatActivity {
                         FileInModel fileInModel = new FileInModel(userId, fileName, uri.toString()); // Get the views from the model class
                         databaseReference.child(userId).setValue(fileInModel); // Push the value into realtime database
                         StyleableToast.makeText(CVActivity.this, "Upload berhasil", Toast.LENGTH_LONG, R.style.mytoast).show();
-                        pd.dismiss();
+                        customProgressDialog.dismiss();
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        float percent = (100 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
-                        pd.setMessage("Uploaded : " + (int) percent + "%");
+
                     }
                 });
     }
