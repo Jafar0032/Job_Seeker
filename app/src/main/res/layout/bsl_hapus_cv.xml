@@ -1,54 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_dialog">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_logout_24"
-        app:tint="@color/primary" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lotie"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:paddingEnd="12dp"
+        android:layout_marginVertical="10dp"
+        app:lottie_rawRes="@raw/trash"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
         android:id="@+id/chooseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Yakin mau hapus ?"
-        android:textColor="@color/primary"
+        android:text="Yakin mau hapus ini?"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:textSize="22sp"
-        android:fontFamily="@font/montserratsemibold"/>
+        android:layout_marginVertical="10dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserratsemibold"
+        android:layout_below="@id/lotie"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginHorizontal="28dp"
-        android:layout_marginTop="12dp">
+        android:layout_marginVertical="20dp"
+        android:layout_below="@id/chooseText">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_hapus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Hapus"
+            android:textColor="@color/primary"
             android:textAllCaps="false"
             android:layout_weight="1"
-            android:layout_marginEnd="12dp"/>
+            android:layout_marginEnd="6dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/bg_button_outline"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Batal"
+            android:textColor="@color/white"
             android:textAllCaps="false"
-            android:layout_weight="1"/>
+            android:layout_marginStart="6dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/bg_button_fill"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

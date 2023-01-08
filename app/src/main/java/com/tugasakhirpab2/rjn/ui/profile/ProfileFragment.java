@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,7 +32,6 @@ import com.tugasakhirpab2.rjn.R;
 import com.tugasakhirpab2.rjn.activities.CVActivity;
 import com.tugasakhirpab2.rjn.activities.ProfilActivity;
 import com.tugasakhirpab2.rjn.activities.SignInActivity;
-import com.tugasakhirpab2.rjn.activities.SignUpActivity;
 import com.tugasakhirpab2.rjn.databinding.FragmentProfileBinding;
 import com.tugasakhirpab2.rjn.model.User;
 
@@ -121,7 +119,7 @@ public class ProfileFragment extends Fragment {
 
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottomsheetlayout);
+        dialog.setContentView(R.layout.bsl_logout);
         Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         Button btnLogout = dialog.findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {

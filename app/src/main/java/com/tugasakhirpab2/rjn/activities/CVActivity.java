@@ -135,7 +135,6 @@ public class CVActivity extends AppCompatActivity {
     }
 
     private void showDialog() {
-
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bsl_hapus_cv);
@@ -232,7 +231,6 @@ public class CVActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private void hideProgressBar(){
         binding.loLoad.setVisibility(View.GONE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

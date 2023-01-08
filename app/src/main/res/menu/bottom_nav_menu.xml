@@ -12,16 +12,6 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_bookmark"
-        android:icon="@drawable/book_not_active"
-        android:title="@string/title_bookmark" />
-
-    <item
-        android:id="@+id/navigation_learn"
-        android:icon="@drawable/learn_not_active"
-        android:title="@string/title_learn" />
-
-    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/profile_not_active"
         android:title="@string/title_profile" />
