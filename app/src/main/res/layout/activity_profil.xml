@@ -197,6 +197,7 @@
         app:lottie_loop="true"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        app:lottie_rawRes="@raw/progressbar"/>
+        app:lottie_rawRes="@raw/progressbar"
+        android:visibility="gone"/>
 
 </RelativeLayout>
