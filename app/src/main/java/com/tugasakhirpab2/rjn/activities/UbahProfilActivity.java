@@ -43,6 +43,12 @@ public class UbahProfilActivity extends AppCompatActivity {
         binding = ActivityUbahProfilBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        userId = mAuth.getCurrentUser().getUid();
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        mRef = mRoot.child("users").child(userId);
+
         Calendar calendar = Calendar.getInstance();
         mYear = calendar.get(Calendar.YEAR);
         mMonth = calendar.get(Calendar.MONTH);
@@ -84,11 +90,6 @@ public class UbahProfilActivity extends AppCompatActivity {
     }
 
     private void editDataUser() {
-        mAuth = FirebaseAuth.getInstance();
-        firebaseUser = mAuth.getCurrentUser();
-        userId = mAuth.getCurrentUser().getUid();
-        mRoot = FirebaseDatabase.getInstance().getReference();
-        mRef = mRoot.child("users").child(userId);
         if(firebaseUser != null){
             mRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -99,9 +100,7 @@ public class UbahProfilActivity extends AppCompatActivity {
                     mRef.child("address").setValue(binding.etAdddress.getText().toString());
 
                     Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
-
                     startActivity(intent);
-                    finish();
                 }
 
                 @Override
@@ -109,57 +108,12 @@ public class UbahProfilActivity extends AppCompatActivity {
 
                 }
             });
-//            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    mRef.child("fullName").setValue(binding.etFullName.getText().toString());
-//                    mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString());
-//                    mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString());
-//                    mRef.child("address").setValue(binding.etAdddress.getText().toString());
-//
-//                    Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
-//
-//                    startActivity(intent);
-//                    finish();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
         }else {
             Toast.makeText(this, "No User!!", Toast.LENGTH_SHORT).show();
         }
-//        mRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                mRef.child("fullName").setValue(binding.etFullName.getText().toString());
-//                mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString());
-//                mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString());
-//                mRef.child("address").setValue(binding.etAdddress.getText().toString());
-//
-//                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
-//
-//                startActivity(intent);
-//                finish();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
     }
 
     private void showUserData() {
-        mAuth = FirebaseAuth.getInstance();
-        firebaseUser = mAuth.getCurrentUser();
-        userId = mAuth.getCurrentUser().getUid();
-        mRoot = FirebaseDatabase.getInstance().getReference();
-        mRef = mRoot.child("users").child(userId);
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -122,7 +122,7 @@ public class UploadProfileImageActivity extends AppCompatActivity {
                     hideProgressBar();
 
                     Toast.makeText(UploadProfileImageActivity.this, "Upload Success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(UploadProfileImageActivity.this, MainActivity.class);
+                    Intent intent = new Intent(UploadProfileImageActivity.this, ProfilActivity.class);
                     startActivity(intent);
                     finish();
                 }

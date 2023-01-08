@@ -45,11 +45,11 @@ public class ProfilActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
+        showProgressBar();
         if (firebaseUser != null) {
             mRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    showProgressBar();
                     String nama, jenisKelamin, birthDate, address;
                     User user = snapshot.getValue(User.class);
                     nama = user.getFullName();
@@ -111,11 +111,11 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
     private void showProgressBar() {
-        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.loLoad.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
-        binding.progressBar.setVisibility(View.GONE);
+        binding.loLoad.setVisibility(View.GONE);
     }
 
 }
