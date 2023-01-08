@@ -41,7 +41,8 @@
             android:layout_marginTop="12dp"
             android:layout_below="@id/sv_search"
             tools:itemCount="1"
-            tools:listitem="@layout/item_kerja" />
+            tools:listitem="@layout/item_kerja"
+            android:layout_marginBottom="48dp"/>
 
     </RelativeLayout>
 
