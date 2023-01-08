@@ -88,7 +88,7 @@ public class UbahProfilActivity extends AppCompatActivity {
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
         if(firebaseUser != null){
-            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            mRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     mRef.child("fullName").setValue(binding.etFullName.getText().toString());
@@ -107,6 +107,25 @@ public class UbahProfilActivity extends AppCompatActivity {
 
                 }
             });
+//            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    mRef.child("fullName").setValue(binding.etFullName.getText().toString());
+//                    mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString());
+//                    mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString());
+//                    mRef.child("address").setValue(binding.etAdddress.getText().toString());
+//
+//                    Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
+//
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
         }else {
             Toast.makeText(this, "No User!!", Toast.LENGTH_SHORT).show();
         }
@@ -143,15 +162,17 @@ public class UbahProfilActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String fullName = String.valueOf(mRef.child("fullName").setValue(binding.etFullName.getText().toString()));
-                String gender = String.valueOf(mRef.child("gender").setValue(binding.spinGender.getSelectedItem().toString()));
-                String birthDate = String.valueOf(mRef.child("birthDate").setValue(binding.etBirthDate.getText().toString()));
-                String address = String.valueOf(mRef.child("address").setValue(binding.etAdddress.getText().toString()));
+                String nama, jenisKelamin, birthDate, address;
+                User user = snapshot.getValue(User.class);
+                nama = user.getFullName();
+                jenisKelamin = user.getGender();
+                birthDate = user.getBirthDate();
+                address = user.getAddress();
 
-                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
-
-                startActivity(intent);
-                finish();
+                binding.etFullName.setText(nama);
+                binding.etGender.setText(jenisKelamin);
+                binding.etBirthDate.setText(birthDate);
+                binding.etAdddress.setText(address);
 
             }
 
