@@ -24,6 +24,7 @@
         <activity
             android:name=".activities.UploadProfileImageActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -32,6 +33,7 @@
         <activity
             android:name=".activities.EngineeringActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -40,6 +42,7 @@
         <activity
             android:name=".activities.HukumActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -48,6 +51,7 @@
         <activity
             android:name=".activities.PariwisataActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -56,6 +60,7 @@
         <activity
             android:name=".activities.ArsitekturActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -64,6 +69,7 @@
         <activity
             android:name=".activities.DesignActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -72,6 +78,7 @@
         <activity
             android:name=".activities.MarketingActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -80,6 +87,7 @@
         <activity
             android:name=".activities.AkuntansiActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -88,6 +96,7 @@
         <activity
             android:name=".activities.CVActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -96,6 +105,7 @@
         <activity
             android:name=".activities.KomputerActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -104,6 +114,7 @@
         <activity
             android:name=".activities.DetailKerjaActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.GreyStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -117,6 +128,7 @@
         <activity
             android:name=".activities.UbahProfilActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -125,6 +137,7 @@
         <activity
             android:name=".activities.ProfilActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JobSeeker.WhiteStatusBar">
             <meta-data
                 android:name="android.app.lib_name"
@@ -159,7 +172,8 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

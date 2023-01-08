@@ -76,7 +76,9 @@ public class UbahProfilActivity extends AppCompatActivity {
         binding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent intent = new Intent(UbahProfilActivity.this, ProfilActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

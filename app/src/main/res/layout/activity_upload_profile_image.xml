@@ -91,16 +91,16 @@
                 android:enabled="false"
                 android:text="Upload" />
 
-            <ProgressBar
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
                 android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
-                android:elevation="10dp"
-                android:indeterminateTint="@color/primary"
-                android:visibility="gone" />
+                app:lottie_rawRes="@raw/progressbar"
+                android:visibility="gone"/>
 
         </RelativeLayout>
 

@@ -49,6 +49,7 @@ public class ProfilActivity extends AppCompatActivity {
             mRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    showProgressBar();
                     String nama, jenisKelamin, birthDate, address;
                     User user = snapshot.getValue(User.class);
                     nama = user.getFullName();
@@ -69,6 +70,7 @@ public class ProfilActivity extends AppCompatActivity {
                             .fitCenter()
                             .placeholder(R.drawable.img_placeholder)
                             .into(binding.ivProfil);
+                    hideProgressBar();
                 }
 
                 @Override
@@ -94,6 +96,7 @@ public class ProfilActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ProfilActivity.this, UbahProfilActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -105,6 +108,14 @@ public class ProfilActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void showProgressBar() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        binding.progressBar.setVisibility(View.GONE);
     }
 
 }
