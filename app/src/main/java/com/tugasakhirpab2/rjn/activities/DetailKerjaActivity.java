@@ -71,16 +71,17 @@ public class DetailKerjaActivity extends AppCompatActivity {
 
     private void getDataFromApi()
     {
-        showProgressBar();
         String idKerja = getIntent().getStringExtra(Intent_Key.EXTRA_ID_KERJA);
         String namaPerusahaan = getIntent().getStringExtra(Intent_Key.EXTRA_NAMA_PERUSAHAAN);
         String job = getIntent().getStringExtra(Intent_Key.EXTRA_JOB);
         String gaji = getIntent().getStringExtra(Intent_Key.EXTRA_GAJI);
         String lokasiPerusahaan = getIntent().getStringExtra(Intent_Key.EXTRA_LOKASI_PERUSAHAAN);
+        showProgressBar();
         APIService.apiEndpoint().getDetailKerja(idKerja)
                 .enqueue(new Callback<DetailKerjaModel>() {
                     @Override
                     public void onResponse(Call<DetailKerjaModel> call, Response<DetailKerjaModel> response) {
+                        hideProgressBar();
                         if(response.isSuccessful())
                         {
                             binding.tvNamaPerusahaan.setText(namaPerusahaan);
@@ -101,7 +102,6 @@ public class DetailKerjaActivity extends AppCompatActivity {
                         Log.d(TAG, t.toString());
                     }
                 });
-        hideProgressBar();
     }
     private void hideProgressBar(){
         binding.loLoad.setVisibility(View.GONE);
