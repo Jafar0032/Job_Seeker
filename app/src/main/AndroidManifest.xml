@@ -147,7 +147,8 @@
             android:name=".activities.ResetPassActivity"
             android:exported="false"
             android:label="Reset Password"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JobSeeker.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

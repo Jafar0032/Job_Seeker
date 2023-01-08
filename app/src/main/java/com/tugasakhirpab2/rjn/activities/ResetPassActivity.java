@@ -46,7 +46,9 @@ public class ResetPassActivity extends AppCompatActivity {
                                 if(task.isSuccessful())
                                 {
                                     Toast.makeText(ResetPassActivity.this, "We have sent instructions to reset your password", Toast.LENGTH_SHORT).show();
-                                    binding.tvShow.setText("please check email in spam section");
+                                    Intent intent = new Intent(ResetPassActivity.this, SignInActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                                 else
                                 {
