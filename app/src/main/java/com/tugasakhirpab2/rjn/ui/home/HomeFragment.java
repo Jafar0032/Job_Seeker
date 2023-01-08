@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -106,80 +107,64 @@ public class HomeFragment extends Fragment {
         binding.btnKategoriKomputer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), KomputerActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriAkuntansi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), AkuntansiActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriMarketing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), MarketingActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriDesign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), DesignActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriArsitektur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), ArsitekturActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriPariwisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), PariwisataActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriHukum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), HukumActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
 
         binding.btnKategoriEngineering.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressBar();
                 Intent intent = new Intent(getActivity(), EngineeringActivity.class);
                 startActivity(intent);
-                hideProgressBar();
             }
         });
         setupSlider();
@@ -224,10 +209,12 @@ public class HomeFragment extends Fragment {
 
     private void getDataFromAPI()
     {
+        showProgressBar();
         APIService.apiEndpoint().getRekomendasiKerja()
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
+                        hideProgressBar();
                         if(response.isSuccessful())
                         {
                             List<KerjaModel.Result> results = response.body().getResult();
@@ -237,7 +224,7 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<KerjaModel> call, Throwable t) {
-
+//                        hideProgressBar();
                     }
                 });
     }
@@ -250,6 +237,11 @@ public class HomeFragment extends Fragment {
 
     private void hideProgressBar(){
         binding.loLoad.setVisibility(View.GONE);
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
-    private void showProgressBar(){ binding.loLoad.setVisibility(View.VISIBLE);}
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
 }

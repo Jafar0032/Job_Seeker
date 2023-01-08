@@ -20,6 +20,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -74,6 +75,7 @@ public class CVActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                showProgressBar();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
                     String data = dataSnapshot.child("userId").getValue().toString();
                     Log.d(TAG, data);
@@ -86,6 +88,7 @@ public class CVActivity extends AppCompatActivity {
                     binding.llNothingCv.setVisibility(View.INVISIBLE);
                     String namaFile = snapshot.child(userId).child("fileName").getValue().toString();
                     binding.tvNamaFile.setText(namaFile);
+                    hideProgressBar();
                     binding.tvNamaFile.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -98,6 +101,7 @@ public class CVActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    hideProgressBar();
                     binding.llAdaCv.setVisibility(View.INVISIBLE);
                     binding.llNothingCv.setVisibility(View.VISIBLE);
                     binding.btnBrowseFile.setOnClickListener(new View.OnClickListener() {
@@ -227,5 +231,15 @@ public class CVActivity extends AppCompatActivity {
                         pd.setMessage("Uploaded : " + (int) percent + "%");
                     }
                 });
+    }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

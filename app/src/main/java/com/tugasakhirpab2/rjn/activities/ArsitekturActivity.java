@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
@@ -78,10 +79,12 @@ public class ArsitekturActivity extends AppCompatActivity {
 
     private void getDataFromAPI()
     {
+        showProgressBar();
         APIService.apiEndpoint().getKategoriArsitektur(searchContent)
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
+                        hideProgressBar();
                         if(response.isSuccessful())
                         {
                             List<KerjaModel.Result> results = response.body().getResult();
@@ -109,5 +112,15 @@ public class ArsitekturActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

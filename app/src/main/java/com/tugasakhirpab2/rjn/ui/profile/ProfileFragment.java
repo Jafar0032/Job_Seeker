@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +66,7 @@ public class ProfileFragment extends Fragment {
         mRoot = FirebaseDatabase.getInstance().getReference();
         mRef = mRoot.child("users").child(userId);
         if (firebaseUser != null) {
+            showProgressBar();
             mRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,6 +81,7 @@ public class ProfileFragment extends Fragment {
                             .fitCenter()
                             .placeholder(R.drawable.img_placeholder)
                             .into(binding.ivProfil);
+                    hideProgressBar();
 
                     binding.llPersonalData.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -113,10 +116,7 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
     }
-
     private void showDialog() {
 
         final Dialog dialog = new Dialog(getActivity());
@@ -151,5 +151,15 @@ public class ProfileFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

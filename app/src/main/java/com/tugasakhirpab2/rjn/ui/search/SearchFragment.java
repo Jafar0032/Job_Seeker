@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -142,10 +143,12 @@ public class SearchFragment extends Fragment {
 
     private void getDataFromAPI()
     {
+        showProgressBar();
         APIService.apiEndpoint().getSearchKerja(searchContent)
                 .enqueue(new Callback<KerjaModel>() {
                     @Override
                     public void onResponse(Call<KerjaModel> call, Response<KerjaModel> response) {
+                        hideProgressBar();
                         if(response.isSuccessful())
                         {
                             List<KerjaModel.Result> results = response.body().getResult();
@@ -155,7 +158,7 @@ public class SearchFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<KerjaModel> call, Throwable t) {
-
+                        hideProgressBar();
                     }
                 });
     }
@@ -169,5 +172,15 @@ public class SearchFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void hideProgressBar(){
+        binding.loLoad.setVisibility(View.GONE);
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    private void showProgressBar(){
+        binding.loLoad.setVisibility(View.VISIBLE);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }
